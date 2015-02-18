@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CUSChatViewController">
+            <connections>
+                <outlet property="cusUIvRetryView" destination="KIK-Jj-yZK" id="Rxo-CH-MEd"/>
+                <outlet property="cusUivContentView" destination="Wea-Va-dYf" id="tzt-W6-dFj"/>
+                <outlet property="cusUivRetryTapPicker" destination="Lh7-5l-250" id="X5d-Lg-ACh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="parent view">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIK-Jj-yZK" userLabel="RetryView">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lh7-5l-250">
+                            <rect key="frame" x="183" y="131" width="234" height="274"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Retry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrC-3Z-3GF">
+                                    <rect key="frame" x="97" y="245" width="41" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cus_retry.png" translatesAutoresizingMaskIntoConstraints="NO" id="3aB-SS-9kD">
+                                    <rect key="frame" x="42" y="48" width="150" height="150"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="3aB-SS-9kD" secondAttribute="bottom" constant="76" id="7HK-97-A7n"/>
+                                <constraint firstItem="3aB-SS-9kD" firstAttribute="top" secondItem="Lh7-5l-250" secondAttribute="top" constant="48" id="Udq-ZE-wgW"/>
+                                <constraint firstAttribute="trailing" secondItem="3aB-SS-9kD" secondAttribute="trailing" constant="42" id="Wf4-xR-Tuw"/>
+                                <constraint firstItem="3aB-SS-9kD" firstAttribute="leading" secondItem="Lh7-5l-250" secondAttribute="leading" constant="42" id="YKe-sI-wVK"/>
+                                <constraint firstAttribute="width" constant="234" id="sgb-xs-QPV"/>
+                                <constraint firstAttribute="height" constant="274" id="uHw-jj-seM"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="Lh7-5l-250" secondAttribute="centerY" id="7og-Eg-1VN"/>
+                        <constraint firstAttribute="centerX" secondItem="Lh7-5l-250" secondAttribute="centerX" id="dJf-kI-32g"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wea-Va-dYf" userLabel="content view">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Wea-Va-dYf" secondAttribute="trailing" id="HhR-xf-t6q"/>
+                <constraint firstAttribute="bottom" secondItem="Wea-Va-dYf" secondAttribute="bottom" id="IWi-Yu-qNw"/>
+                <constraint firstItem="KIK-Jj-yZK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Ie4-wi-ttU"/>
+                <constraint firstItem="Wea-Va-dYf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J1G-Rd-Mo3"/>
+                <constraint firstAttribute="bottom" secondItem="KIK-Jj-yZK" secondAttribute="bottom" id="QMb-cT-paV"/>
+                <constraint firstItem="KIK-Jj-yZK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wg5-y7-MLw"/>
+                <constraint firstItem="Wea-Va-dYf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="gdl-fN-t9J"/>
+                <constraint firstAttribute="trailing" secondItem="KIK-Jj-yZK" secondAttribute="trailing" id="zsE-6p-Bls"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="cus_retry.png" width="600" height="479"/>
+    </resources>
+</document>
