@@ -135,6 +135,4 @@ extern NSString * const cusConstStrKeyNavBarTitleColor;
 #pragma mark - Launching Functions
 -(void)launchTicketsModule:(UIViewController*) mCurrentViewController;
 
--(void)launchChatModule:(UIViewController*) mCurrentViewController;
-
 @end
