@@ -25,16 +25,16 @@
     //[myNsmdDictionary setObject:@"abc@abc.com" forKey:cusConstStrKeyDeveloperEmailId];  // Rygh@yuck.com
     //[myNsmdDictionary setObject:@"Shashikant" forKey:cusConstStrKeyUserName];
     //[myNsmdDictionary setObject:@"User Feedback goes Here." forKey:cusConstStrKeyFeedback];
-    [myNsmdDictionary setObject:@"#000000" forKey:cusChatConstStrKeyNavBarTitleColor];
-    [myNsmdDictionary setObject:@"#000000" forKey:cusConstStrKeyNavBarGradientColorFirst];
-    [myNsmdDictionary setObject:@"#ffffff" forKey:cusConstStrKeyNavBarGradientColorSecond];
+//    [myNsmdDictionary setObject:@"#000000" forKey:cusChatConstStrKeyNavBarTitleColor];
+//    [myNsmdDictionary setObject:@"#000000" forKey:cusConstStrKeyNavBarGradientColorFirst];
+//    [myNsmdDictionary setObject:@"#ffffff" forKey:cusConstStrKeyNavBarGradientColorSecond];
     
     //[myNsmdDictionary setObject:@"customer128" forKey:cusConstStrKeyWaitingScreenImageName];
     //[myNsmdDictionary setObject:@"Pre-Chat Offline Message Here." forKey:cusConstStrKeyPreChatOfflineMessage];
     //[myNsmdDictionary setObject:@"Pre-Chat Online Message Here." forKey:cusConstStrKeyPreChatOnlineMessage];
-    [myNsmdDictionary setObject:@"#E1F5A9" forKey:cusConstStrKeyPreChatHeaderMsgBackgroundColor];
+//    [myNsmdDictionary setObject:@"#E1F5A9" forKey:cusConstStrKeyPreChatHeaderMsgBackgroundColor];
     //[myNsmdDictionary setObject:@"#0000ff" forKey:cusConstStrKeyPreChatHeaderMsgBackgroundColor];
-    [myNsmdDictionary setObject:@"YES" forKey:mStrKeyEnableAutoFormSubmit];
+//    [myNsmdDictionary setObject:@"YES" forKey:mStrKeyEnableAutoFormSubmit];
     
     NSLog(@"value of bool %hhd", [Cus360Chat sharedInstance].cusBoolEnableAutoFormSubmit);
     [[Cus360Chat sharedInstance] install:@"1e229bc480dbd19b8df5a850c9d78a78" withOptions:myNsmdDictionary];

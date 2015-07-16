@@ -521,7 +521,7 @@
     NSNumber *tagNo =[element objectForKey:@"question_id"];
     int tage = tagNo.integerValue;
     [cusTextInput setTag:tage];
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
+    NSString *placeholder = [element objectForKey:@"e_help_text"];
     if (![[element objectForKey:@"required"]isEqualToString:@""]) {
         placeholder = [placeholder stringByAppendingString:@" *"];
     }
@@ -645,23 +645,32 @@
     //    NSLog(@"%@", element);
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
     YOriginPoint+=64;
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    
+//    [new setBackgroundColor:[UIColor cyanColor]];
     [self.PreChatscrollView addSubview:new];
     
+    UILabel *nameLabel = [[UILabel alloc] init];
+//    nameLabel.backgroundColor = [UIColor yellowColor];
+    [nameLabel setFrame:CGRectMake(16, 16, 200, 15)];
+    [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
+    nameLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
+    nameLabel.text = @"Name";
+    [new addSubview:nameLabel];
+    
     name = [[UITextField alloc] init];
-    [name setFrame:CGRectMake(16, 16, screenW-32 , 24)];
-    name.font = [UIFont systemFontOfSize:15];
+    [name setFrame:CGRectMake(16, 16, screenW-32 , 40)];
+    [name setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
+    name.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    name.autocorrectionType = UITextAutocorrectionTypeNo;
+    //name.font = [UIFont systemFontOfSize:15];
     name.delegate=self;
     
     if (![HomerUtils stringIsEmpty:[Cus360Chat sharedInstance].cusStrUserName]) {
         name.text = [Cus360Chat sharedInstance].cusStrUserName;
     }else{
-        NSString *placeholder =[element objectForKey:@"e_help_text"];
-        name.placeholder = placeholder;
+        name.placeholder = [element objectForKey:@"e_help_text"];
     }
     name.borderStyle = UITextBorderStyleNone;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 48,screenW-32 , 1)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 64, screenW-32, 1)];
     line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
     
     [new addSubview:line];

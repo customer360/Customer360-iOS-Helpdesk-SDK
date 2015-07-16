@@ -534,7 +534,7 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
             [[Cus360Chat sharedInstance]setNavigationBarColor:cusNsstrTempNavigationBarTintColor];
         }
         else{
-            [[Cus360Chat sharedInstance]setNavigationBarColor:@"#2B3B61"];
+            [[Cus360Chat sharedInstance]setNavigationBarColor:@"#f8f8f8"];
         }
         
         if ([mNsmdOptions objectForKey:cusConstStrKeyNavBarGradientColorFirst]!=nil)
@@ -546,8 +546,8 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
             [[Cus360Chat sharedInstance] setGradientColorSecond:gradientTwo];
         }
         else{
-            [[Cus360Chat sharedInstance] setGradientColorFirst:@"#2B3B61"];
-            [[Cus360Chat sharedInstance] setGradientColorSecond:@"#2B3B61"];
+            [[Cus360Chat sharedInstance] setGradientColorFirst:@"#f8f8f8"];
+            [[Cus360Chat sharedInstance] setGradientColorSecond:@"#f8f8f8"];
         }
         
         if ([mNsmdOptions objectForKey:cusChatConstStrKeyNavBarTitleColor]!=nil)
@@ -557,7 +557,7 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
             [[Cus360Chat sharedInstance]setNavigationBarTitleColor:cusNsstrTempNavigationBarTitleColor];
         }
         else{
-            [[Cus360Chat sharedInstance]setNavigationBarTitleColor:@"#ffffff"];
+            [[Cus360Chat sharedInstance]setNavigationBarTitleColor:@"#000000"];
         }
         
         if ([mNsmdOptions objectForKey:cusConstStrKeyDeveloperEmailId]!=nil)
