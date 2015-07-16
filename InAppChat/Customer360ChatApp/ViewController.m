@@ -37,7 +37,7 @@
 //    [myNsmdDictionary setObject:@"YES" forKey:mStrKeyEnableAutoFormSubmit];
     
     NSLog(@"value of bool %hhd", [Cus360Chat sharedInstance].cusBoolEnableAutoFormSubmit);
-    [[Cus360Chat sharedInstance] install:@"1e229bc480dbd19b8df5a850c9d78a78" withOptions:myNsmdDictionary];
+    [[Cus360Chat sharedInstance] install:@"66250f27c76322ff46abb96e543e9043" withOptions:myNsmdDictionary];
     NSLog(@"value of bool %hhd", [Cus360Chat sharedInstance].cusBoolEnableAutoFormSubmit);
 }
 

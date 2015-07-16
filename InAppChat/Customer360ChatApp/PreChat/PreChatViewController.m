@@ -15,6 +15,7 @@
 #import "CUSThankYouViewController.h"
 #import "Cus360ChatHistoryController.h"
 
+
 @interface PreChatViewController () <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIScrollViewDelegate,UITextViewDelegate>
 {
     RadioButton *RadioButtonNumber;
@@ -247,6 +248,8 @@
 
 -(void)doONSccuessfullyFetchedPrechatForm:(id)cusArgIdResponseObject{
     dict = cusArgIdResponseObject;
+    NSLog(@"Dictonary = %@",dict);
+    
     if (dict) {
         arrViews =[[dict objectForKey:@"response"]objectForKey:@"form"];
         
@@ -317,28 +320,28 @@
             }
             else if ([elementToRender isEqualToString:@"textInput"]) {
                 
-                [self makeTextInput:element];
+                [self makeTextInputBox:element];
             }
             
             else if ([elementToRender isEqualToString:@"textArea"]) {
-                [self makeTextArea:element];
+                [self makeTextAreaBox:element];
             }
             else if ([elementToRender isEqualToString:@"date"]){
                 
-                [self makeDateinput:element];
+                [self makeDateBox:element];
             }
             else if ([elementToRender isEqualToString:@"time"]){
                 
-                [self makeTimeinput:element];
+                [self makeTimeBox:element];
             }
             else if ([elementToRender isEqualToString:@"radio"]) {
                 
-                [self makeRadioButtons:element];
+                [self makeRadioButtonBox:element];
             }
             
             else if ([elementToRender isEqualToString:@"checkbox"]){
                 
-                [self makeChekBoxes:element];
+                [self makeCheckBox:element];
             }
             else if ([elementToRender isEqualToString:@"chat_email"]){
                 
@@ -394,119 +397,108 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark- Render View
--(void)makeTimeinput:(NSDictionary*)element{
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    //    YOriginPoint+=64;
-    //    [new setBackgroundColor:[UIColor lightTextColor]];
-    [self.PreChatscrollView addSubview:new];
+
+
+
+
+
+//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+//*************************  RENDERED  VIEW  BOX  ***************
+
+
+#pragma mark - *** Render View ***
+
+- (UIView*)makeDefaultBox:(NSDictionary*)element withTextField:(BOOL)isTextField
+{
+    int boxHeight = 64;
     
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
+    //------------------------------
+    //Box's main view...
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, boxHeight)];
+    YOriginPoint += boxHeight;
+    [self.PreChatscrollView addSubview:boxView];
     
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
+    
+    //------------------------------
+    //Box's Label...
+    UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 15)];
+    [boxLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
+    boxLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
+    
+    if ([[element objectForKey:@"required"]isEqualToString:@""])
     {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }
-    else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    [new addSubview:nameLable];
-    
-    
-    UITextField *cusTimeInput  = [[UITextField alloc] init];
-    //    cusTextInput.text = @"Prasad";
-    [cusTimeInput setFrame:CGRectMake(16, nameLable.frame.origin.y+nameLable.frame.size.height+8, screenW-32, 24)];
-    cusTimeInput.delegate=self;
-    NSNumber *tagNo =[element objectForKey:@"question_id"];
-    int tage = tagNo.integerValue;
-    [cusTimeInput setTag:tage];
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""])
+        boxLabel.text = [element objectForKey:@"question"];
+    }else
     {
-        placeholder = [placeholder stringByAppendingString:@" *"];
+        boxLabel.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
     }
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, cusTimeInput.frame.origin.y+cusTimeInput.frame.size.height+8 ,screenW-32 , 1)];
+    [boxView addSubview:boxLabel];
+    
+    
+    //------------------------------
+    //Box's Text Field OR UILabel...
+    
+    if(isTextField)
+    {
+        UITextField *boxDescription  = [[UITextField alloc] initWithFrame:CGRectMake(16, 16, screenW-32 , 40)];
+        //    boxDescription.text = @"Prasad";
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
+        boxDescription.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+        boxDescription.delegate=self;
+        //    boxDescription.backgroundColor = [UIColor cyanColor];
+        NSNumber *tagNo =[element objectForKey:@"question_id"];
+        [boxDescription setTag:tagNo.integerValue];
+        boxDescription.placeholder = [element objectForKey:@"e_help_text"];
+        [boxView addSubview:boxDescription];
+    }else
+    {
+        UILabel *boxDescription = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, screenW-32 , 24)];
+        boxDescription.text = @"this is label description";
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
+        boxDescription.textAlignment = NSTextAlignmentLeft;
+        [boxView addSubview:boxDescription];
+    }
+    
+    //------------------------------
+    //Box's end line...
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 63, screenW-32, 1)];
     line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
+    [boxView addSubview:line];
     
-    [new addSubview:line];
-    YOriginPoint +=line.frame.origin.y+10;
-    [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
-    
-    [new addSubview:cusTimeInput];
-    [_cusChatUITextFieldTime addObject:cusTimeInput];
-    //
-    //    NSLog(@"makeQuestionBox");
-    
+    return boxView;
 }
--(void)makeDateinput:(NSDictionary*)element{
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    //    YOriginPoint+=64;
-    //    [new setBackgroundColor:[UIColor lightTextColor]];
-    [self.PreChatscrollView addSubview:new];
-    
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
+
+-(UITextField*)subViewOfKindUITextField:(UIView*)parentView
+{
+    for (UIView *view in parentView.subviews) {
+        if([view isKindOfClass:[UITextField class]]){
+            return (UITextField*)view;
+        }
     }
     
-    [new addSubview:nameLable];
+    return [[UITextField alloc] init];
+}
+
+-(void)makeTimeBox:(NSDictionary*)element{
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
     
+    UITextField *cusDateInput = [self subViewOfKindUITextField:boxView];
+    [_cusChatUITextFieldTime addObject:cusDateInput];
+}
+
+-(void)makeDateBox:(NSDictionary*)element{
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
     
-    UITextField *cusDateInput  = [[UITextField alloc] init];
-    //    cusTextInput.text = @"Prasad";
-    [cusDateInput setFrame:CGRectMake(16, nameLable.frame.origin.y+nameLable.frame.size.height+8, screenW-32, 24)];
-    cusDateInput.delegate=self;
-    NSNumber *tagNo =[element objectForKey:@"question_id"];
-    int tage = tagNo.integerValue;
-    [cusDateInput setTag:tage];
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""])
-    {
-        placeholder = [placeholder stringByAppendingString:@" *"];
-    }
-    
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, cusDateInput.frame.origin.y+cusDateInput.frame.size.height+8 ,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    
-    [new addSubview:line];
-    YOriginPoint +=line.frame.origin.y+10;
-    [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
-    
-    [new addSubview:cusDateInput];
+    UITextField *cusDateInput = [self subViewOfKindUITextField:boxView];
     [_cusChatUITextFieldDate addObject:cusDateInput];
-    //
-    //    NSLog(@"makeQuestionBox");
-    
 }
--(void)makeTextInput:(NSDictionary*)element{
-    
+
+-(void)makeTextInputBox:(NSDictionary*)element{
+   /*
     //    NSLog(@"%@", element);
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
     YOriginPoint+=64 ;//16+32+8
@@ -535,12 +527,13 @@
     //  [new addSubview:nameLable];
     [_cusChatUITextField addObject:cusTextInput];
     [new addSubview:cusTextInput];
-    
+    */
 }
 
 
--(void)makeTextArea:(NSDictionary*)element
+-(void)makeTextAreaBox:(NSDictionary*)element
 {
+    /*
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 120)];
     //    YOriginPoint+=120;
     //    [new setBackgroundColor:[UIColor lightTextColor]];
@@ -587,11 +580,12 @@
     [new addSubview:custextArea];
     [_cusChatUITextView addObject:custextArea];
     //    NSLog(@"makeQuestionBox");
+     */
 }
 
 
 -(void)makePhoneNumberBox:(NSDictionary *)element {
-    
+    /*
     //    NSLog(@"%@", element);
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
     YOriginPoint+=64 ;//16+32+8
@@ -616,9 +610,10 @@
     phoneNo.borderStyle = UITextBorderStyleNone;
     //  [new addSubview:nameLable];
     [new addSubview:phoneNo];
+     */
 }
 -(void)makeAddressBox:(NSDictionary *)element {
-    
+    /*
     //    NSLog(@"%@", element);
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
     YOriginPoint+=64;
@@ -639,46 +634,25 @@
     [new addSubview:line];
     address.borderStyle = UITextBorderStyleNone;
     [new addSubview:address];
+     */
 }
+
 -(void)makeNameBox:(NSDictionary *)element {
     
-    //    NSLog(@"%@", element);
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    YOriginPoint+=64;
-//    [new setBackgroundColor:[UIColor cyanColor]];
-    [self.PreChatscrollView addSubview:new];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
     
-    UILabel *nameLabel = [[UILabel alloc] init];
-//    nameLabel.backgroundColor = [UIColor yellowColor];
-    [nameLabel setFrame:CGRectMake(16, 16, 200, 15)];
-    [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
-    nameLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
-    nameLabel.text = @"Name";
-    [new addSubview:nameLabel];
-    
-    name = [[UITextField alloc] init];
-    [name setFrame:CGRectMake(16, 16, screenW-32 , 40)];
-    [name setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
-    name.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    name = [self subViewOfKindUITextField:boxView];
+    [name setReturnKeyType:UIReturnKeyDone];
     name.autocorrectionType = UITextAutocorrectionTypeNo;
-    //name.font = [UIFont systemFontOfSize:15];
-    name.delegate=self;
+    name.tag = 1;
     
-    if (![HomerUtils stringIsEmpty:[Cus360Chat sharedInstance].cusStrUserName]) {
+    if (![HomerUtils stringIsEmpty:[Cus360Chat sharedInstance].cusStrUserName])
         name.text = [Cus360Chat sharedInstance].cusStrUserName;
-    }else{
-        name.placeholder = [element objectForKey:@"e_help_text"];
-    }
-    name.borderStyle = UITextBorderStyleNone;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 64, screenW-32, 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
     
-    [new addSubview:line];
-    [new addSubview:name];
 }
 
 -(void)makeEmailBox:(NSDictionary *)element
-{
+{/*
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
     YOriginPoint+=64;
     [new setBackgroundColor:[UIColor lightTextColor]];
@@ -710,11 +684,12 @@
     [new addSubview:line];
     
     //    NSLog(@"makeEmailBox");
-    
+    */
 }
-#pragma mark - RadioButtons
--(void)makeRadioButtons:(NSDictionary *)element{
-    
+
+
+-(void)makeRadioButtonBox:(NSDictionary *)element{
+    /*
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 160)];
     
     YOriginPoint+=160;
@@ -778,16 +753,17 @@
     
     
     //    NSLog(@"makeRadioButtons");
-    
+    */
 }
 -(void)onRadioButtonValueChanged:(RadioButton*)button
 {
     
     RadioButtonNumber = button.selectedButton;
 }
-#pragma mark -CheckBoxes
--(void)makeChekBoxes:(NSDictionary *)element{
-    
+
+
+-(void)makeCheckBox:(NSDictionary *)element{
+    /*
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 160)];
     YOriginPoint+=160;
     [new setBackgroundColor:[UIColor lightTextColor]];
@@ -859,7 +835,7 @@
     }
     
     //    NSLog(@"makeChekBoxes");
-    
+    */
 }
 -(void)checkboxSelected:(UIButton *)sender
 {
@@ -873,9 +849,10 @@
         [checkBoxArray removeObject:sender];
     }
 }
-#pragma mark -Question Box
+
 
 -(void)makeQuestionBox:(NSDictionary *)element{
+    /*
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 120)];
     //    YOriginPoint+=120;
     //    [new setBackgroundColor:[UIColor lightTextColor]];
@@ -921,11 +898,11 @@
     [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
     
     [new addSubview:question];
-    
+    */
 }
-#pragma mark -Dropdown Box
+
 -(void)makeDropDownBox:(NSDictionary *)element{
-    
+    /*
     //    NSLog(@"%@", element);
     
     UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
@@ -983,8 +960,21 @@
     [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
     //    [new addSubview:error];
     //    NSLog(@"makeDropDownBox");
+    */
     
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
 }
+
+
+
+//*************************  END  ***************
+//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+
+
+
+
+
 #pragma mark - sumbit process
 -(BOOL)validateAllElements{
     
@@ -1615,6 +1605,19 @@
 }
 
 #pragma mark - TextField Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // TAGs...
+    // 1 -> Name TextField
+    if(textField.tag == 1)
+    {
+        [textField resignFirstResponder];
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     //    if (textField.superview.frame.origin.y+30>[HomerUtils getScaledSizeBasedOnDevice:250]) {
@@ -1625,6 +1628,7 @@
     
     return YES;
 }
+
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     
     //    if (textField.superview.frame.origin.y+30>[HomerUtils getScaledSizeBasedOnDevice:250]) {
@@ -1702,7 +1706,7 @@
             UIToolbar*  mypickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
             mypickerToolbar.barStyle = UIBarStyleDefault;
             [mypickerToolbar sizeToFit];
-            for (int P = 0; P<_cusChatUITextFieldSelect.count ; P++)
+            for (int P = 0; P<_cusChatUITextFieldDate.count ; P++)
             {
                 NSNumber *tagNo =[element objectForKey:@"question_id"];
                 int tage = tagNo.integerValue;
@@ -1735,7 +1739,7 @@
             mypickerToolbar.barStyle = UIBarStyleDefault;
             [mypickerToolbar sizeToFit];
             
-            for (int P = 0; P<_cusChatUITextFieldSelect.count ; P++)
+            for (int P = 0; P<_cusChatUITextFieldTime.count ; P++)
             {
                 NSNumber *tagNo =[element objectForKey:@"question_id"];
                 int tage = tagNo.integerValue;
