@@ -423,15 +423,19 @@
     //------------------------------
     //Box's Label...
     UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 15)];
-    [boxLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
+    [boxLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     boxLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
     
-    if ([[element objectForKey:@"required"]isEqualToString:@""])
-    {
-        boxLabel.text = [element objectForKey:@"question"];
-    }else
+//    if ([[element objectForKey:@"required"]isEqualToString:@""])
+//    {
+//        boxLabel.text = [element objectForKey:@"question"];
+//    }else
     {
         boxLabel.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
+        
+        NSMutableAttributedString *attrib = [[NSMutableAttributedString alloc] initWithString:boxLabel.text];
+        [attrib addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(boxLabel.text.length-1, 1)];
+        [boxLabel setAttributedText:attrib];
     }
     
     [boxView addSubview:boxLabel];
@@ -444,7 +448,7 @@
     {
         UITextField *boxDescription  = [[UITextField alloc] initWithFrame:CGRectMake(16, 16, screenW-32 , 40)];
         //    boxDescription.text = @"Prasad";
-        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
+        [boxDescription setFont:[UIFont fontWithName:@"Helvetica" size:15]];
         boxDescription.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
         boxDescription.delegate=self;
         //    boxDescription.backgroundColor = [UIColor cyanColor];
@@ -455,8 +459,8 @@
     }else
     {
         UILabel *boxDescription = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, screenW-32 , 24)];
-        boxDescription.text = @"this is label description";
-        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:15]];
+        //boxDescription.text = @"this is label description";
+        [boxDescription setFont:[UIFont fontWithName:@"Helvetica" size:15]];
         boxDescription.textAlignment = NSTextAlignmentLeft;
         [boxView addSubview:boxDescription];
     }
@@ -498,143 +502,24 @@
 }
 
 -(void)makeTextInputBox:(NSDictionary*)element{
-   /*
-    //    NSLog(@"%@", element);
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    YOriginPoint+=64 ;//16+32+8
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    
-    [self.PreChatscrollView addSubview:new];
-    
-    UITextField *cusTextInput  = [[UITextField alloc] init];
-    //    cusTextInput.text = @"Prasad";
-    [cusTextInput setFrame:CGRectMake(16, 16, screenW-32, 24)];
-    cusTextInput.delegate=self;
-    NSNumber *tagNo =[element objectForKey:@"question_id"];
-    int tage = tagNo.integerValue;
-    [cusTextInput setTag:tage];
-    NSString *placeholder = [element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""]) {
-        placeholder = [placeholder stringByAppendingString:@" *"];
-    }
-    
-    cusTextInput.placeholder = placeholder;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 48,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    [new addSubview:line];
-    cusTextInput.font = [UIFont systemFontOfSize:15];
-    cusTextInput.borderStyle = UITextBorderStyleNone;
-    //  [new addSubview:nameLable];
-    [_cusChatUITextField addObject:cusTextInput];
-    [new addSubview:cusTextInput];
-    */
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 
 
 -(void)makeTextAreaBox:(NSDictionary*)element
 {
-    /*
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 120)];
-    //    YOriginPoint+=120;
-    //    [new setBackgroundColor:[UIColor lightTextColor]];
-    [self.PreChatscrollView addSubview:new];
-    
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    
-    [new addSubview:nameLable];
-    
-    UITextView *custextArea = [[UITextView alloc] init];
-    [custextArea setFrame:CGRectMake(16, nameLable.frame.origin.y+nameLable.frame.size.height+8, screenW-32, 72)];//8+24+8+72+8
-    custextArea.delegate = self;
-    custextArea.font = [UIFont systemFontOfSize:15];
-    NSNumber *tagNo =[element objectForKey:@"question_id"];
-    int tage = tagNo.integerValue;
-    [custextArea setTag:tage];
-    //     question.layer.borderWidth=0.5f;
-    //    question.layer.cornerRadius=5.0f;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, custextArea.frame.origin.y+custextArea.frame.size.height+8 ,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    
-    [new addSubview:line];
-    YOriginPoint+=line.frame.origin.y+10;
-    [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
-    
-    [new addSubview:custextArea];
-    [_cusChatUITextView addObject:custextArea];
-    //    NSLog(@"makeQuestionBox");
-     */
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 
 
 -(void)makePhoneNumberBox:(NSDictionary *)element {
-    /*
-    //    NSLog(@"%@", element);
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    YOriginPoint+=64 ;//16+32+8
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    
-    [self.PreChatscrollView addSubview:new];
-    
-    phoneNo = [[UITextField alloc] init];
-    [phoneNo setFrame:CGRectMake(16, 16, screenW-32, 24)];
-    phoneNo.delegate=self;
-    phoneNo.keyboardType = UIKeyboardTypeNumberPad;
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""]) {
-        placeholder = [placeholder stringByAppendingString:@" *"];
-    }
-    
-    phoneNo.placeholder = placeholder;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 48,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    [new addSubview:line];
-    phoneNo.font = [UIFont systemFontOfSize:15];
-    phoneNo.borderStyle = UITextBorderStyleNone;
-    //  [new addSubview:nameLable];
-    [new addSubview:phoneNo];
-     */
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 -(void)makeAddressBox:(NSDictionary *)element {
-    /*
-    //    NSLog(@"%@", element);
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    YOriginPoint+=64;
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    [self.PreChatscrollView addSubview:new];
-    address = [[UITextField alloc] init];
-    [address setFrame:CGRectMake(16, 16, screenW-32, 24)];
-    address.delegate=self;
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""]) {
-        placeholder = [placeholder stringByAppendingString:@" *"];
-    }
-    
-    address.placeholder = placeholder;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 48,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    address.font = [UIFont systemFontOfSize:15];
-    [new addSubview:line];
-    address.borderStyle = UITextBorderStyleNone;
-    [new addSubview:address];
-     */
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 
 -(void)makeNameBox:(NSDictionary *)element {
@@ -652,109 +537,16 @@
 }
 
 -(void)makeEmailBox:(NSDictionary *)element
-{/*
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    YOriginPoint+=64;
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    
-    [self.PreChatscrollView addSubview:new];
-    email = [[UITextField alloc] init];
-    [email setFrame:CGRectMake(16, 16, screenW-32, 24)];
-    email.keyboardType =UIKeyboardTypeEmailAddress;
-    //    email.text = @"xyz@xyz.com";
-    email.delegate=self;
-    email.borderStyle = UITextBorderStyleNone;
-    email.font = [UIFont systemFontOfSize:15];
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 48,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    
-    if (![HomerUtils stringIsEmpty:[Cus360Chat sharedInstance].cusStrDeveloperEmaiId]) {
-        email.text = [Cus360Chat sharedInstance].cusStrDeveloperEmaiId;
-    }else{
-        if (![HomerUtils stringIsEmpty:[[Cus360Chat sharedInstance] getUserEmailId]]) {
-            email.text = [[Cus360Chat sharedInstance] getUserEmailId];
-        }else{
-            NSString *placeholder =[element objectForKey:@"e_help_text"];
-            email.placeholder = [placeholder stringByAppendingString:@" *"];
-        }
-    }
-    
-    //    [new addSubview:nameLable];
-    [new addSubview:email];
-    [new addSubview:line];
-    
-    //    NSLog(@"makeEmailBox");
-    */
+{
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 
 
 -(void)makeRadioButtonBox:(NSDictionary *)element{
-    /*
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 160)];
-    
-    YOriginPoint+=160;
-    
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    [self.PreChatscrollView addSubview:new];
-    
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""])
-    {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    [new addSubview:nameLable];
-    NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:[[element objectForKey:@"answers"] count]];
-    
-    NSMutableArray * buttonTitles = [[NSMutableArray alloc]initWithArray:[element objectForKey:@"answers"]];
-    
-    CGRect btnRect =CGRectMake(20, nameLable.frame.origin.y+nameLable.frame.size.height+8, 200, 30);
-    for (int option = 0; option<buttonTitles.count; option++)
-    {
-        NSString* optionTitle = [[buttonTitles objectAtIndex:option]objectForKey:@"answer"];
-        RadioButton* btn = [[RadioButton alloc] initWithFrame:btnRect];
-        [btn addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-        //        btnRect.origin.y += 40;
-        
-        [btn setTitle:optionTitle forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-        [btn setImage:[UIImage imageNamed:@"radio-default"] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"radio-selected"] forState:UIControlStateSelected];
-        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
-        [new addSubview:btn];
-        
-        btnRect.origin.y += 40;
-        
-        if (isgreater(btnRect.origin.y + btnRect.size.height, new.frame.size.height))
-        {
-            [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y, new.frame.size.width, new.frame.size.height+btnRect.size.height+10)];
-            YOriginPoint+=btnRect.size.height+10;
-        }
-        
-        [buttons addObject:btn];
-    }
-    [buttons[0] setGroupButtons:buttons];
-    
-    
-    //    NSLog(@"makeRadioButtons");
-    */
+
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
 }
+
 -(void)onRadioButtonValueChanged:(RadioButton*)button
 {
     
@@ -763,79 +555,8 @@
 
 
 -(void)makeCheckBox:(NSDictionary *)element{
-    /*
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 160)];
-    YOriginPoint+=160;
-    [new setBackgroundColor:[UIColor lightTextColor]];
     
-    [self.PreChatscrollView addSubview:new];
-    
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    
-    [new addSubview:nameLable];
-    
-    checkBoxArray = [[NSMutableArray alloc]init];
-    NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:[[element objectForKey:@"answers"]  count]];
-    NSMutableArray *buttonTitles = [[NSMutableArray alloc]initWithArray:[element objectForKey:@"answers"]];
-    
-    CGRect btnRect = CGRectMake(20, nameLable.frame.origin.y+nameLable.frame.size.height+8, 200, 30);
-    
-    for (int option = 0; option<buttonTitles.count; option++)
-    {
-        UIButton *checkbox = [[UIButton alloc] init];
-        [checkbox setFrame:btnRect];
-        NSString* optionTitle = [[buttonTitles objectAtIndex:option]objectForKey:@"answer"];
-        [checkbox setTitle:optionTitle forState:UIControlStateNormal];
-        [checkbox setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        checkbox.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-        
-        NSString* optionTag = [[buttonTitles objectAtIndex:option]objectForKey:@"answer_id"];
-        [checkbox setTag:optionTag.integerValue];
-        
-        // 20x20 is the size of the checckbox that you want
-        // create 2 images sizes 20x20 , one empty square and
-        // another of the same square with the checkmark in it
-        // Create 2 UIImages with these new images, then:
-        
-        [checkbox setImage:[UIImage imageNamed:@"checkbox-default"]
-                  forState:UIControlStateNormal];
-        [checkbox setImage:[UIImage imageNamed:@"checkbox-selected"]
-                  forState:UIControlStateSelected];
-        checkbox.adjustsImageWhenHighlighted=YES;
-        checkbox.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        checkbox.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
-        [checkbox addTarget:self action:@selector(checkboxSelected:) forControlEvents:UIControlEventTouchUpInside];
-        [new addSubview:checkbox];
-        [buttons addObject:checkbox];
-        btnRect.origin.y += 40;
-        
-        if (isgreater(btnRect.origin.y + btnRect.size.height, new.frame.size.height))
-        {
-            [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y, new.frame.size.width, new.frame.size.height+btnRect.size.height+10)];
-            YOriginPoint+=btnRect.size.height+10;
-        }
-    }
-    
-    //    NSLog(@"makeChekBoxes");
-    */
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
 }
 -(void)checkboxSelected:(UIButton *)sender
 {
@@ -852,115 +573,11 @@
 
 
 -(void)makeQuestionBox:(NSDictionary *)element{
-    /*
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 120)];
-    //    YOriginPoint+=120;
-    //    [new setBackgroundColor:[UIColor lightTextColor]];
     
-    [self.PreChatscrollView addSubview:new];
-    
-    
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    
-    [new addSubview:nameLable];
-    
-    question= [[UITextView alloc] init];
-    [question setFrame:CGRectMake(16, nameLable.frame.origin.y+nameLable.frame.size.height+8, screenW-32, 72)];//8+24+8+72+8
-    question.delegate = self;
-    question.font = [UIFont systemFontOfSize:15];
-    if (![HomerUtils stringIsEmpty:[Cus360Chat sharedInstance].cusStrUserFeedback]) {
-        question.text = [Cus360Chat sharedInstance].cusStrUserFeedback;
-    }
-    //    question.text = @"jadkf hagsdfjhasfjkhsdfjkahsdg";
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, question.frame.origin.y+question.frame.size.height+8 ,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    
-    [new addSubview:line];
-    YOriginPoint+=line.frame.origin.y+10;
-    [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
-    
-    [new addSubview:question];
-    */
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
 }
 
 -(void)makeDropDownBox:(NSDictionary *)element{
-    /*
-    //    NSLog(@"%@", element);
-    
-    UIView *new = [[UIView alloc]initWithFrame:CGRectMake(self.PreChatscrollView.frame.origin.x, YOriginPoint, self.PreChatscrollView.frame.size.width, 64)];
-    //    YOriginPoint+=64;
-    [new setBackgroundColor:[UIColor lightTextColor]];
-    
-    [self.PreChatscrollView addSubview:new];
-    UILabel *nameLable = [[UILabel alloc] init];
-    [nameLable setFrame:CGRectMake(16, 16, 200, 24)];
-    nameLable.font = [UIFont boldSystemFontOfSize:17];
-    nameLable.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0f];
-    
-    if ([[element objectForKey:@"required"]isEqualToString:@""]) {
-        nameLable.text = [element objectForKey:@"question"];
-    }
-    else {
-        nameLable.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
-    }
-    CGRect size = [nameLable.text boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]} context:nil];
-    if (size.size.height>24)
-    {
-        nameLable.frame =CGRectMake(16, 8, size.size.width, size.size.height);
-        [nameLable setNumberOfLines:0];
-    }else{
-        nameLable.frame =CGRectMake(16, 8, size.size.width, 24);
-    }
-    
-    [new addSubview:nameLable];
-    UITextField* dropdown= [[UITextField alloc] init];
-    
-    NSNumber *tagNo =[element objectForKey:@"question_id"];
-    int tage = tagNo.integerValue;
-    [dropdown setTag:tage];
-    //    dropdown.tag = 1;
-    dropdown.delegate=self;
-    [dropdown setFrame:CGRectMake(16, nameLable.frame.origin.y+nameLable.frame.size.height+8, screenW-32, 24)];
-    dropdown.borderStyle = UITextBorderStyleNone;
-    NSString *placeholder =[element objectForKey:@"e_help_text"];
-    if (![[element objectForKey:@"required"]isEqualToString:@""]) {
-        placeholder = [placeholder stringByAppendingString:@" *"];
-    }
-    //    dropdown.placeholder = placeholder;
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, CGRectGetMaxY(dropdown.frame)+8,screenW-32 , 1)];
-    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
-    
-    [new addSubview:line];
-    
-    [new addSubview:dropdown];
-    [_cusChatUITextFieldSelect addObject:dropdown];
-    
-    UIImageView *arrow = [[UIImageView alloc] initWithFrame:CGRectMake(screenW-48, CGRectGetMinY(dropdown.frame), 12,12 )];
-    arrow.image = [UIImage imageNamed:@"arrow"];
-    [new addSubview:arrow];
-    YOriginPoint+=line.frame.origin.y+10;
-    [new setFrame:CGRectMake(new.frame.origin.x, new.frame.origin.y,  screenW, line.frame.origin.y+11)];
-    //    [new addSubview:error];
-    //    NSLog(@"makeDropDownBox");
-    */
     
     UIView *boxView = [self makeDefaultBox:element withTextField:NO];
 }
