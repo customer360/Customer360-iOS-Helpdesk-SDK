@@ -593,6 +593,9 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
         if ([mNsmdOptions objectForKey:cusConstStrKeyPreChatHeaderMsgBackgroundColor]!=nil) {
             NSString *preChatOfflineMessageBackCOlor = (NSString *)[mNsmdOptions objectForKey:cusConstStrKeyPreChatHeaderMsgBackgroundColor];
             [[Cus360Chat sharedInstance] setPreChatOfflineMsgBackgroundColor:preChatOfflineMessageBackCOlor];
+        }else
+        {
+            [[Cus360Chat sharedInstance] setPreChatOfflineMsgBackgroundColor:@"0079FF"];
         }
         
         if ([mNsmdOptions objectForKey:mStrKeyEnableAutoFormSubmit]!=nil) {

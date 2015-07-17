@@ -57,23 +57,19 @@
 /**
   * loadNavigationBar is a fucntion which is called in all view controller because we hide the default navigation bar of the user and show a custom navigationbar, hence any modifcation to the navbar should happen here
   */
+
+#pragma mark - Nagivation Bar
 -(void)loadNavigationBar{
 
     self.navigationController.navigationBar.hidden = YES;
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    //CGFloat screenHeight = screenRect.size.height;
-//    [[UINavigationBar appearance] setTitleTextAttributes:
-//     [NSDictionary dictionaryWithObjectsAndKeys:
-//      [UIColor blackColor], NSForegroundColorAttributeName,
-//      [UIFont fontWithName:@"ArialMT" size:16.0], NSFontAttributeName,nil]];
+
     self.cusUiNbNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 64)];
     self.cusUiNbNavBar.barTintColor = [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarColor]];
 
-   //NSDictionary *attributes = [NSDictionary dictionaryWithObject:[self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]]forKey:NSForegroundColorAttributeName];
-   // NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"chalkdust" size:15.0], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
-    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
+    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
 
     [self.cusUiNbNavBar setTitleTextAttributes:attrb];
     
@@ -86,6 +82,33 @@
     //[view.layer insertSublayer:gradient atIndex:0];
     //[self.cusUiNbNavBar addSubview:view];
     [self.cusUiNbNavBar.layer insertSublayer:gradient atIndex:1];
+}
+
+- (UIBarButtonItem*)getNavigationBackButtonWithTarget:(id)target action:(SEL)action
+{
+    UIView *backBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+    //backBtnView.backgroundColor = [UIColor yellowColor];
+    
+//    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
+//    img.image = [UIImage imageNamed:@"back"];
+    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
+    [backBtnView addSubview:img];
+    
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(img.bounds.size.width+5, 0, backBtnView.bounds.size.width-22, 30)];
+    
+    lbl.textColor = [self colorWithHexString:@"#0079FF"];
+    [lbl setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
+    lbl.text = @"Back";
+    
+    [backBtnView addSubview:lbl];
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
+    [backBtnView addGestureRecognizer:singleFingerTap];
+    
+    //UIBarButtonItem *backMenuBarButton = ;
+
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:backBtnView];
 }
 
 #pragma -Load Fucntions

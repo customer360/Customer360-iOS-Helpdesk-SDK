@@ -14,21 +14,23 @@
 @property (nonatomic,strong) NSMutableArray* cusNsmaAttachments;
 
 
--(void)loadNavigationBar;
+- (void)loadNavigationBar;
 
--(void)doOnAccessTokenVerified:(id)cusArgResponseObject;
+- (UIBarButtonItem*)getNavigationBackButtonWithTarget:(id)target action:(SEL)action;
 
--(void)doOnNetworkTaskFailed:(id)cusArgerror;
+- (void)doOnAccessTokenVerified:(id)cusArgResponseObject;
 
--(void)showErrorFromResponse:(id)cusArgIdResposeObject;
+- (void)doOnNetworkTaskFailed:(id)cusArgerror;
 
--(void)performSubClassWork;
+- (void)showErrorFromResponse:(id)cusArgIdResposeObject;
 
--(void)showAlert:(NSString *)cusArgIdMessage;
+- (void)performSubClassWork;
 
--(void)finishThisPage;
+- (void)showAlert:(NSString *)cusArgIdMessage;
 
--(void)addSubViewToAVerticleScrollView:(UIScrollView *)cusArgUisv viewToBeAdded:(UIView *)cusArgUiv offSetHeight:(CGFloat)cusArgOffsetHeight offSetWdith:(CGFloat)cusArgOffsetWidth;
+- (void)finishThisPage;
+
+- (void)addSubViewToAVerticleScrollView:(UIScrollView *)cusArgUisv viewToBeAdded:(UIView *)cusArgUiv offSetHeight:(CGFloat)cusArgOffsetHeight offSetWdith:(CGFloat)cusArgOffsetWidth;
 
 
 - (CGRect)getCurrentScreenBoundsBasedOnOrientation;

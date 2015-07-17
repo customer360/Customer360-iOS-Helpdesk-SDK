@@ -110,7 +110,7 @@
     if([CUSApiHelperChat checkIfFetchDataWasSuccess:cusArgResponseObject])
     {
         [CUSApiHelperChat parseAccessTokenSuccessResponse:cusArgResponseObject];
-        YOriginPoint =44;
+        //YOriginPoint =44;
         NSDictionary *online = (NSDictionary*)cusArgResponseObject;
         NSDictionary *chatAdvanceSetting = [[NSDictionary alloc]init];
         chatAdvanceSetting = [[online objectForKey:@"response"] objectForKey:@"chatAdvanceSetting"];
@@ -170,27 +170,26 @@
 -(void)loadNavigationBar{
     [super loadNavigationBar];
     
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Chat"];
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Pre-Chat Form"];
     
-    UIBarButtonItem *myBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(finishThisPage)];
+    UIBarButtonItem *backMenuBarButton = [super getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
+    item.leftBarButtonItem = backMenuBarButton;
     
-    //UIBarButtonItem *myRightChatHistoryBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"chat.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goToChatHistoryController)];
-    // NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"chalkdust" size:15.0], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
-    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
+    //UIBarButtonItem *create = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cus_create_ticket.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doOncreateTicketClicked) ];
     
-    if (![HomerUtils stringIsEmpty:[[Cus360Chat sharedInstance] getUserEmailId]]) {
-        UIBarButtonItem *myRightChatHistoryBtn = [[UIBarButtonItem alloc] initWithTitle:@"Chat History" style:UIBarButtonItemStylePlain target:self action:@selector(goToChatHistoryController)];
-        [myRightChatHistoryBtn setTitleTextAttributes:attrb forState:UIControlStateNormal];
-        item.rightBarButtonItem = myRightChatHistoryBtn;
-    }
+    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:16], NSFontAttributeName, [self colorWithHexString:@"#0079FF"], NSForegroundColorAttributeName, nil];
     
-    [myBackButton setTitleTextAttributes:attrb forState:UIControlStateNormal];
-    item.leftBarButtonItem = myBackButton;
+    UIBarButtonItem *create = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(submit:)];
+    [create setTitleTextAttributes:attrb forState:UIControlStateNormal];
+    item.rightBarButtonItem = create;
+
+    
+
     
     [self.cusUiNbNavBar popNavigationItemAnimated:NO];
-    
     [self.cusUiNbNavBar pushNavigationItem:item animated:NO];
     [self.view addSubview:self.cusUiNbNavBar];
+
 }
 
 -(void)performSubClassWork
@@ -258,9 +257,8 @@
             return;
         }
         
-        UILabel *statusLable = [[UILabel alloc]init];
+        UILabel *statusLable = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, [[UIScreen mainScreen] bounds].size.width-32, 30)];
         statusLable.font = [UIFont systemFontOfSize:16.0f];
-        statusLable.frame =CGRectMake(16, 30, [[UIScreen mainScreen] bounds].size.width-20, 30);
         [statusLable setNumberOfLines:0];
         NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
         style.alignment = NSTextAlignmentLeft;
@@ -275,21 +273,20 @@
             preChatMessage = [Cus360Chat sharedInstance].cusStrPreChatOnlineMessage;
         }
         
-        NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:preChatMessage attributes:@{ NSParagraphStyleAttributeName : style,NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
+        NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:preChatMessage attributes:@{ NSParagraphStyleAttributeName : style,NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:17], NSForegroundColorAttributeName: [self colorWithHexString:@"#FFFFFF"]}];
         statusLable.attributedText = attrText;
+        
         CGRect new = [statusLable.attributedText boundingRectWithSize:CGSizeMake(screenW-32, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin)  context:nil];
         
-        if (new.size.height>30)
+        if (new.size.height>32)
         {
-            statusLable.frame =CGRectMake(16, 30, screenW-20, new.size.height);
+            statusLable.frame =CGRectMake(16, 16, screenW-32, new.size.height);
         }
         [statusLable setNumberOfLines:0];
-        YOriginPoint += statusLable.frame.size.height+24;
-        UIView *LableView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenW, YOriginPoint-24)];
-        if (![HomerUtils stringIsEmpty:[[Cus360Chat sharedInstance] getPreChatOfflineMsgBackgroundColor]]) {
-            [LableView setBackgroundColor:[self colorWithHexString:[[Cus360Chat sharedInstance] getPreChatOfflineMsgBackgroundColor]]];
-        }else
-        [LableView setBackgroundColor:[UIColor colorWithRed:223.0/255.0 green:223.0/255.0 blue:223.0/255.0 alpha:0.6f]];
+        YOriginPoint += statusLable.frame.size.height+32;
+        UIView *LableView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenW, YOriginPoint)];
+        [LableView setBackgroundColor:[self colorWithHexString:[[Cus360Chat sharedInstance] getPreChatOfflineMsgBackgroundColor]]];
+        [LableView setAlpha:0.6];
         
         [LableView addSubview:statusLable];
         
@@ -362,7 +359,7 @@
                 [self makeQuestionBox:element];
             }
         }
-        YOriginPoint+=60;
+       /* YOriginPoint+=60;
         UIButton *submit = [[UIButton alloc] init];
         [submit setTitle:@"START CHATTING" forState:UIControlStateNormal];
         [submit setFrame:CGRectMake(0, 0, 180, 40)];
@@ -374,10 +371,11 @@
         [submit.layer setCornerRadius:3.0f];
         [_PreChatscrollView addSubview:submit];
         [submit addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
+        */
         
         //**** Do not disturb this statement position or scrollview won't work. ***///
         //**** YOriginPoint increament after each element is rendered on screen. **///
-        _PreChatscrollView.contentSize = CGSizeMake(self.PreChatscrollView.frame.size.width, YOriginPoint+100);
+        _PreChatscrollView.contentSize = CGSizeMake(self.PreChatscrollView.frame.size.width, YOriginPoint+10);
     }
     
     else{
@@ -409,7 +407,7 @@
 
 #pragma mark - *** Render View ***
 
-- (UIView*)makeDefaultBox:(NSDictionary*)element withTextField:(BOOL)isTextField
+- (UIView*)makeDefaultBox:(NSDictionary*)element withTextField:(BOOL)isTextField iconImage:(NSString*)icon
 {
     int boxHeight = 64;
     
@@ -423,7 +421,7 @@
     //------------------------------
     //Box's Label...
     UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 15)];
-    [boxLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+    [boxLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     boxLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
     
 //    if ([[element objectForKey:@"required"]isEqualToString:@""])
@@ -448,7 +446,7 @@
     {
         UITextField *boxDescription  = [[UITextField alloc] initWithFrame:CGRectMake(16, 16, screenW-32 , 40)];
         //    boxDescription.text = @"Prasad";
-        [boxDescription setFont:[UIFont fontWithName:@"Helvetica" size:15]];
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
         boxDescription.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
         boxDescription.delegate=self;
         //    boxDescription.backgroundColor = [UIColor cyanColor];
@@ -460,10 +458,22 @@
     {
         UILabel *boxDescription = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, screenW-32 , 24)];
         //boxDescription.text = @"this is label description";
-        [boxDescription setFont:[UIFont fontWithName:@"Helvetica" size:15]];
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
         boxDescription.textAlignment = NSTextAlignmentLeft;
         [boxView addSubview:boxDescription];
     }
+    
+    
+    
+    //------------------------------
+    //Box's Image...
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+    CGRect imgFrame = imgView.frame;
+    imgFrame.origin.x = screenW - 32 - imgFrame.size.width;
+    imgFrame.origin.y = 16;
+    [imgView setFrame:imgFrame];
+    [boxView addSubview:imgView];
+    
     
     //------------------------------
     //Box's end line...
@@ -487,7 +497,7 @@
 
 -(void)makeTimeBox:(NSDictionary*)element{
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:@"clock"];
     
     UITextField *cusDateInput = [self subViewOfKindUITextField:boxView];
     [_cusChatUITextFieldTime addObject:cusDateInput];
@@ -495,7 +505,7 @@
 
 -(void)makeDateBox:(NSDictionary*)element{
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:@"calendar"];
     
     UITextField *cusDateInput = [self subViewOfKindUITextField:boxView];
     [_cusChatUITextFieldDate addObject:cusDateInput];
@@ -503,28 +513,28 @@
 
 -(void)makeTextInputBox:(NSDictionary*)element{
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 
 
 -(void)makeTextAreaBox:(NSDictionary*)element
 {
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 
 
 -(void)makePhoneNumberBox:(NSDictionary *)element {
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 -(void)makeAddressBox:(NSDictionary *)element {
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 
 -(void)makeNameBox:(NSDictionary *)element {
     
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
     
     name = [self subViewOfKindUITextField:boxView];
     [name setReturnKeyType:UIReturnKeyDone];
@@ -538,13 +548,13 @@
 
 -(void)makeEmailBox:(NSDictionary *)element
 {
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 
 
 -(void)makeRadioButtonBox:(NSDictionary *)element{
 
-    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
 }
 
 -(void)onRadioButtonValueChanged:(RadioButton*)button
@@ -556,7 +566,7 @@
 
 -(void)makeCheckBox:(NSDictionary *)element{
     
-    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
 }
 -(void)checkboxSelected:(UIButton *)sender
 {
@@ -574,12 +584,12 @@
 
 -(void)makeQuestionBox:(NSDictionary *)element{
     
-    UIView *boxView = [self makeDefaultBox:element withTextField:YES];
+    UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
 }
 
 -(void)makeDropDownBox:(NSDictionary *)element{
     
-    UIView *boxView = [self makeDefaultBox:element withTextField:NO];
+    UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
 }
 
 
