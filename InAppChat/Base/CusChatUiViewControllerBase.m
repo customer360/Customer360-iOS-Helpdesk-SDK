@@ -84,17 +84,33 @@
     [self.cusUiNbNavBar.layer insertSublayer:gradient atIndex:1];
 }
 
+- (void)loadNavigationBarWithItem:(UINavigationItem*)item leftItem:(UIBarButtonItem*)leftItem rightItem:(UIBarButtonItem*)rightItem
+{
+    [self loadNavigationBar];
+    
+    item.leftBarButtonItem = leftItem;
+    item.rightBarButtonItem = rightItem;
+    
+    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:16], NSFontAttributeName, [self colorWithHexString:@"#0079FF"], NSForegroundColorAttributeName, nil];
+    [rightItem setTitleTextAttributes:attrb forState:UIControlStateNormal];
+    
+    
+    [self.cusUiNbNavBar popNavigationItemAnimated:NO];
+    [self.cusUiNbNavBar pushNavigationItem:item animated:NO];
+    [self.view addSubview:self.cusUiNbNavBar];
+}
+
 - (UIBarButtonItem*)getNavigationBackButtonWithTarget:(id)target action:(SEL)action
 {
     UIView *backBtnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
-    //backBtnView.backgroundColor = [UIColor yellowColor];
+//    backBtnView.backgroundColor = [UIColor yellowColor];
     
 //    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 20)];
 //    img.image = [UIImage imageNamed:@"back"];
     UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
     [backBtnView addSubview:img];
     
-    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(img.bounds.size.width+5, 0, backBtnView.bounds.size.width-22, 30)];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(img.bounds.size.width+5, 0, backBtnView.bounds.size.width-22, 20)];
     
     lbl.textColor = [self colorWithHexString:@"#0079FF"];
     [lbl setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];

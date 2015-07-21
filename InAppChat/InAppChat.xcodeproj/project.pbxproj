@@ -46,6 +46,8 @@
 		26E266591B59234300D7D6D3 /* waiting.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E266251B59234300D7D6D3 /* waiting.png */; };
 		26E2665A1B59234300D7D6D3 /* waiting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E266261B59234300D7D6D3 /* waiting@2x.png */; };
 		26E2665B1B59234300D7D6D3 /* waiting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E266271B59234300D7D6D3 /* waiting@3x.png */; };
+		26E9580A1B5CCFF7009D62DE /* PreChatOptionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E958081B5CCFF7009D62DE /* PreChatOptionsVC.m */; };
+		26E9580B1B5CCFF7009D62DE /* PreChatOptionsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E958091B5CCFF7009D62DE /* PreChatOptionsVC.xib */; };
 		C815EDB61AE91346009DDAB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAE51AE28BD000A75C46 /* Foundation.framework */; };
 		C815EDB71AE91353009DDAB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAD91AE28B7400A75C46 /* CoreLocation.framework */; };
 		C815EDB81AE91361009DDAB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DADB1AE28B7C00A75C46 /* CoreData.framework */; };
@@ -835,6 +837,9 @@
 		26E266251B59234300D7D6D3 /* waiting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waiting.png; sourceTree = "<group>"; };
 		26E266261B59234300D7D6D3 /* waiting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "waiting@2x.png"; sourceTree = "<group>"; };
 		26E266271B59234300D7D6D3 /* waiting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "waiting@3x.png"; sourceTree = "<group>"; };
+		26E958071B5CCFF7009D62DE /* PreChatOptionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreChatOptionsVC.h; sourceTree = "<group>"; };
+		26E958081B5CCFF7009D62DE /* PreChatOptionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreChatOptionsVC.m; sourceTree = "<group>"; };
+		26E958091B5CCFF7009D62DE /* PreChatOptionsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreChatOptionsVC.xib; sourceTree = "<group>"; };
 		C803DAD71AE28B5C00A75C46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C803DAD91AE28B7400A75C46 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		C803DADB1AE28B7C00A75C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
@@ -1507,6 +1512,9 @@
 		C8C2AF5C1AA57C09008BAF9D /* PreChat */ = {
 			isa = PBXGroup;
 			children = (
+				26E958071B5CCFF7009D62DE /* PreChatOptionsVC.h */,
+				26E958081B5CCFF7009D62DE /* PreChatOptionsVC.m */,
+				26E958091B5CCFF7009D62DE /* PreChatOptionsVC.xib */,
 				C8C2AF611AA57C09008BAF9D /* PreChatViewController.h */,
 				C8C2AF621AA57C09008BAF9D /* PreChatViewController.m */,
 				C8C2AF631AA57C09008BAF9D /* PreChatViewController.xib */,
@@ -2977,6 +2985,7 @@
 				C8C2AF361AA57B61008BAF9D /* SVProgressHUD.bundle in Resources */,
 				26E2662E1B59234300D7D6D3 /* back.png in Resources */,
 				26E2662F1B59234300D7D6D3 /* back@2x.png in Resources */,
+				26E9580B1B5CCFF7009D62DE /* PreChatOptionsVC.xib in Resources */,
 				26E2665B1B59234300D7D6D3 /* waiting@3x.png in Resources */,
 				C8D68FF31AD4FC4B0097EB2E /* radio-default@2x.png in Resources */,
 				C8C509721AC1764F00B3F265 /* average.png in Resources */,
@@ -3080,6 +3089,7 @@
 				C8C2AF6E1AA57C09008BAF9D /* PreChatViewController.m in Sources */,
 				C8C2B0E81AA58AFF008BAF9D /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				C8C2B1001AA58AFF008BAF9D /* XMPPGoogleSharedStatus.m in Sources */,
+				26E9580A1B5CCFF7009D62DE /* PreChatOptionsVC.m in Sources */,
 				C8C2B1361AA58AFF008BAF9D /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				C8C2B1251AA58AFF008BAF9D /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				C8C2B15B1AA58AFF008BAF9D /* XMPPMessage+XEP_0333.m in Sources */,

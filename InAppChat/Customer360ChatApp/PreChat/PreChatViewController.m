@@ -14,20 +14,28 @@
 #import "WaitViewController.h"
 #import "CUSThankYouViewController.h"
 #import "Cus360ChatHistoryController.h"
-
+#import "PreChatOptionsVC.h"
 
 @interface PreChatViewController () <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIScrollViewDelegate,UITextViewDelegate>
 {
     RadioButton *RadioButtonNumber;
-    NSMutableArray *checkBoxArray;
+    //NSMutableArray *checkBoxArray;
+    //NSMutableArray *self.checkBoxArray;
+    
+    
     NSString *preChatMessage;
     NSString *status ;
+    NSDictionary *checkboxElement;
+    NSDictionary *radioElement;
+    NSDictionary *dropdownElement;
 }
 
 @end
 
 @implementation PreChatViewController
 
+
+//@synthesize checkBoxArray = checkBoxArray;
 @synthesize address = address;
 @synthesize phoneNo = phoneNo;
 //@synthesize dropdown = dropdown;
@@ -41,6 +49,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"-> viewDidLoad");
     [super viewDidLoad];
     UITapGestureRecognizer *onViewTapHideKeyBoard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyBoard)];
     [onViewTapHideKeyBoard setCancelsTouchesInView:NO];
@@ -50,6 +59,8 @@
     [CUSApiHelperChat verifyAccessTokenFromViewController:self withOnSuccessCallBack:@selector(doOnAccessTokenVerified:) andOnFailureCallBack:@selector(doOnNetworkTaskFailed:)];
     [self registerForKeyboardNotifications];
     //    [self hideActivityIndicator];
+    
+    self.checkBoxArray = [[NSMutableArray alloc] init];
 }
 
 -(void)hideKeyBoard
@@ -61,6 +72,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    NSLog(@"-> viewWillAppear");
     [super viewWillAppear:animated];
     //     self.PreChatscrollView.contentOffset = CGPointMake(0, 0);
     _cusChatUITextField = [[NSMutableArray alloc]init];
@@ -69,7 +81,7 @@
     _cusChatUITextFieldDate= [[NSMutableArray alloc] init];
     _cusChatUITextFieldTime= [[NSMutableArray alloc] init];
     [self showActivityIndicator];
-    [self loadNavigationBar];
+    [self loadNavigationBarItem];
 }
 
 - (void)registerForKeyboardNotifications
@@ -167,29 +179,15 @@
 }
 
 
--(void)loadNavigationBar{
-    [super loadNavigationBar];
+-(void)loadNavigationBarItem{
     
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Pre-Chat Form"];
     
-    UIBarButtonItem *backMenuBarButton = [super getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
-    item.leftBarButtonItem = backMenuBarButton;
-    
-    //UIBarButtonItem *create = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cus_create_ticket.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doOncreateTicketClicked) ];
-    
-    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:16], NSFontAttributeName, [self colorWithHexString:@"#0079FF"], NSForegroundColorAttributeName, nil];
-    
-    UIBarButtonItem *create = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(submit:)];
-    [create setTitleTextAttributes:attrb forState:UIControlStateNormal];
-    item.rightBarButtonItem = create;
+    UIBarButtonItem *leftItem = [self getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
 
-    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(submit:)];
 
-    
-    [self.cusUiNbNavBar popNavigationItemAnimated:NO];
-    [self.cusUiNbNavBar pushNavigationItem:item animated:NO];
-    [self.view addSubview:self.cusUiNbNavBar];
-
+    [self loadNavigationBarWithItem:item leftItem:leftItem rightItem:rightItem];
 }
 
 -(void)performSubClassWork
@@ -296,7 +294,22 @@
         line.alpha = 0.06f;
         [self.PreChatscrollView addSubview:line];
 
+        //-------------------------------
+        // Notice for Mandatory fields..
+        UILabel *notice = [[UILabel alloc] initWithFrame:CGRectMake(0, YOriginPoint, self.PreChatscrollView.frame.size.width, 25)];
+        YOriginPoint += notice.frame.size.height;
+        notice.text = @"Fields marked * are required";
+        [notice setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
+        notice.textAlignment = NSTextAlignmentCenter;
+        notice.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
+        [self.PreChatscrollView addSubview:notice];
+        NSMutableAttributedString *attrib = [[NSMutableAttributedString alloc] initWithString:notice.text];
+        [attrib addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(14, 1)];
+        [notice setAttributedText:attrib];
         
+        
+        //----------------------------------------------------------
+        // Render Fields...
         for (int i=1; i<=arrViews.count; i++) {
             
             NSDictionary *element =[[arrViews objectAtIndex:i-1]objectForKey:@"question_container"] ;
@@ -424,10 +437,10 @@
     [boxLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
     boxLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
     
-//    if ([[element objectForKey:@"required"]isEqualToString:@""])
-//    {
-//        boxLabel.text = [element objectForKey:@"question"];
-//    }else
+    if ([[element objectForKey:@"required"]isEqualToString:@""])
+    {
+        boxLabel.text = [element objectForKey:@"question"];
+    }else
     {
         boxLabel.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
         
@@ -460,6 +473,7 @@
         //boxDescription.text = @"this is label description";
         [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
         boxDescription.textAlignment = NSTextAlignmentLeft;
+        [boxDescription setTag:10];
         [boxView addSubview:boxDescription];
     }
     
@@ -477,7 +491,7 @@
     
     //------------------------------
     //Box's end line...
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 63, screenW-32, 1)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 63, screenW, 1)];
     line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
     [boxView addSubview:line];
     
@@ -549,12 +563,28 @@
 -(void)makeEmailBox:(NSDictionary *)element
 {
     UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
+    email = [[UITextField alloc] init];
+    email.text = @"atul@gmail.com";
 }
 
 
 -(void)makeRadioButtonBox:(NSDictionary *)element{
 
     UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
+    radioElement = element;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentRadioScreen:)];
+    [boxView addGestureRecognizer:tapGesture];
+}
+
+
+- (void)presentRadioScreen:(UITapGestureRecognizer *)recognizer
+{
+    PreChatOptionsVC *checkVC = [[PreChatOptionsVC alloc] initWithNibName:@"PreChatOptionsVC" bundle:nil];
+    [self addChildViewController:checkVC];
+    [self.view addSubview:checkVC.view];
+    
+    [checkVC renderElement:radioElement withViewBox:recognizer.view];
 }
 
 -(void)onRadioButtonValueChanged:(RadioButton*)button
@@ -564,34 +594,83 @@
 }
 
 
+//------------
+// Check box...
 -(void)makeCheckBox:(NSDictionary *)element{
     
     UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
+    checkboxElement = element;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentCheckboxScreen:)];
+    [boxView addGestureRecognizer:tapGesture];
+    
 }
+
+- (void)presentCheckboxScreen:(UITapGestureRecognizer *)recognizer
+{
+    PreChatOptionsVC *checkVC = [[PreChatOptionsVC alloc] initWithNibName:@"PreChatOptionsVC" bundle:nil];
+    [self addChildViewController:checkVC];
+    [self.view addSubview:checkVC.view];
+    
+    [checkVC renderElement:checkboxElement withViewBox:recognizer.view];
+}
+
+ -(void)checkBoxCallback:(NSArray *)array
+{
+
+    [self.checkBoxArray removeAllObjects];
+    self.checkBoxArray = [[NSMutableArray alloc] initWithCapacity:4];
+    
+    for(int i=0; i<array.count; i++)
+    {
+        NSLog(@"-> add object to checkboxarray");
+        [self.checkBoxArray addObject:[array objectAtIndex:i]];
+    }
+}
+
+/*
 -(void)checkboxSelected:(UIButton *)sender
 {
     if (![sender isSelected]) {
         [sender setSelected:YES];
-        [checkBoxArray addObject:sender ];
+        [self.checkBoxArray addObject:sender];
     }
     else
     {
         [sender setSelected:NO];
-        [checkBoxArray removeObject:sender];
+        [self.checkBoxArray removeObject:sender];
     }
 }
-
+*/
 
 -(void)makeQuestionBox:(NSDictionary *)element{
     
     UIView *boxView = [self makeDefaultBox:element withTextField:YES iconImage:nil];
+    question= [[UITextView alloc] init];
+    question.text = @"hi";
 }
 
+
+//-------------
+// Dropdown...
 -(void)makeDropDownBox:(NSDictionary *)element{
     
     UIView *boxView = [self makeDefaultBox:element withTextField:NO iconImage:@"select"];
+    dropdownElement = element;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(presentDropdownScreen:)];
+    [boxView addGestureRecognizer:tapGesture];
 }
 
+
+- (void)presentDropdownScreen:(UITapGestureRecognizer *)recognizer
+{
+    PreChatOptionsVC *checkVC = [[PreChatOptionsVC alloc] initWithNibName:@"PreChatOptionsVC" bundle:nil];
+    [self addChildViewController:checkVC];
+    [self.view addSubview:checkVC.view];
+    
+    [checkVC renderElement:dropdownElement withViewBox:recognizer.view];
+}
 
 
 //*************************  END  ***************
@@ -622,7 +701,7 @@
                     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
                     f.numberStyle = NSNumberFormatterDecimalStyle;
                     NSNumber * noOfDigit = [f numberFromString:[valid objectForKey:@"noOfDigit"]];
-                    if(! (phoneNo.text.length==noOfDigit.integerValue))
+                    if(! (phoneNo.text.length == noOfDigit.integerValue))
                     {
                         alert = [[UIAlertView alloc] initWithTitle: [elements objectForKey:@"question"] message:@"Please enter appropriate response" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         [alert show];
@@ -679,7 +758,7 @@
             }
             else if ([elementToCheck isEqualToString:@"checkbox"]){
                 
-                if (checkBoxArray.count == 0)
+                if (self.checkBoxArray.count == 0)
                 {
                     alert = [[UIAlertView alloc] initWithTitle:[elements objectForKey:@"question"] message:@"Please select appropriate option" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
@@ -919,9 +998,9 @@
         else if ([elementToRender isEqualToString:@"checkbox"]){
             //            NSMutableArray *answers = (NSMutableArray*)[element objectForKey:@"answers"];
             NSMutableArray *checks = [[NSMutableArray alloc]init];
-            for (int j=0; j<checkBoxArray.count; j++)
+            for (int j=0; j<self.checkBoxArray.count; j++)
             {
-                [checks addObject:[NSString stringWithFormat:@"%d",(int)[[checkBoxArray objectAtIndex:j] tag]]];
+                [checks addObject:[NSString stringWithFormat:@"%d",(int)[[self.checkBoxArray objectAtIndex:j] tag]]];
             }
             [params setObject:checks forKey:[NSString stringWithFormat:@"queId_%@",parameter]];
         }

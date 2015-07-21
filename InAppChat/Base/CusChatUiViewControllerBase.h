@@ -16,6 +16,8 @@
 
 - (void)loadNavigationBar;
 
+- (void)loadNavigationBarWithItem:(UINavigationItem*)item leftItem:(UIBarButtonItem*)leftItem rightItem:(UIBarButtonItem*)rightItem;
+
 - (UIBarButtonItem*)getNavigationBackButtonWithTarget:(id)target action:(SEL)action;
 
 - (void)doOnAccessTokenVerified:(id)cusArgResponseObject;

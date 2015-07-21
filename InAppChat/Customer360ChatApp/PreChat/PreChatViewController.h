@@ -14,6 +14,8 @@
 //    BOOL checkBoxSelected;
     int YOriginPoint;
     CGFloat screenW;
+    //NSMutableArray *newOptArray;
+    
 
  NSData *data,*data1;
 }
@@ -30,7 +32,9 @@
 @property (strong, nonatomic) NSMutableArray * cusChatUITextFieldSelect;
 @property (strong, nonatomic) NSMutableArray * cusChatUITextFieldDate;
 @property (strong, nonatomic) NSMutableArray * cusChatUITextFieldTime;
+@property (strong, nonatomic) NSMutableArray *checkBoxArray;
+@property (nonatomic,strong)NSMutableArray *myOptArray;
 
-
-
+//- (NSMutableArray *)getCheckBoxArray;
+- (void)checkBoxCallback:(NSArray *)array;
 @end
