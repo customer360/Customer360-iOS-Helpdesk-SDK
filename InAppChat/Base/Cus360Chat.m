@@ -614,6 +614,11 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
     
     _cusBaseView =nil;
     _cusBaseView = mCurrentViewController;
+    
+    PostChatViewController *postChatViewController = [[PostChatViewController alloc] initWithNibName:@"PostChatViewController" bundle:nil];
+    [_cusBaseView presentViewController:postChatViewController animated:NO completion:nil];
+    
+    /*
     PreChatViewController* myCustomViewController=[[PreChatViewController alloc] initWithNibName:@"PreChatViewController" bundle:nil];
     
     //  PostChatViewController *myCustomViewController=[[PostChatViewController alloc]initWithNibName:@"PostChatViewController" bundle:nil];
@@ -627,11 +632,10 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
     // ];
     // }];
     // [_cusBaseView presentViewController:myCustomViewController animated:YES completion:nil];
-    
+    */
 }
 
 #pragma mark - XMPP Setup
-
 
 - (void)setupStream {
     

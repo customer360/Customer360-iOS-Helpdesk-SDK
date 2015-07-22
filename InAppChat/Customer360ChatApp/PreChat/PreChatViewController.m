@@ -481,13 +481,15 @@
     
     //------------------------------
     //Box's Image...
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
-    CGRect imgFrame = imgView.frame;
-    imgFrame.origin.x = screenW - 32 - imgFrame.size.width;
-    imgFrame.origin.y = 16;
-    [imgView setFrame:imgFrame];
-    [boxView addSubview:imgView];
-    
+    if(icon)
+    {
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+        CGRect imgFrame = imgView.frame;
+        imgFrame.origin.x = screenW - 32 - imgFrame.size.width;
+        imgFrame.origin.y = 16;
+        [imgView setFrame:imgFrame];
+        [boxView addSubview:imgView];
+    }
     
     //------------------------------
     //Box's end line...

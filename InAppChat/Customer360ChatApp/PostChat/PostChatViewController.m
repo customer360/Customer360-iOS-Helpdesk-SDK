@@ -25,7 +25,6 @@
     
 }
 
-
 @end
 
 
@@ -61,8 +60,14 @@
     [super viewWillAppear:animated];
     //    [self showActivityIndicator];
     
-    [self loadNavigationBar];
+    [self loadNavigationBarItem];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void)finishThisPage{
     
     [self.CSATscrollView removeFromSuperview];
@@ -70,22 +75,210 @@
 }
 
 
--(void)loadNavigationBar{
-    [super loadNavigationBar];
+-(void)loadNavigationBarItem{
+    
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Please Rate Us"];
     
-    UIBarButtonItem *myBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(finishThisPage)];
-    // NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"chalkdust" size:15.0], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
-    NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
+    UIBarButtonItem *leftItem = [self getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStylePlain target:self action:@selector(submitForm)];
+    
+    [self loadNavigationBarWithItem:item leftItem:leftItem rightItem:rightItem];
+}
+
+
+
+#pragma mark - *** Render View ***
+
+- (UIView*)makeDefaultBox:(NSDictionary*)element iconImage:(NSString*)icon
+{
+    
+    NSString *boxType = [element objectForKey:@"type"];
+    NSLog(@"boxType = %@",boxType);
+    int boxHeight = 64;
+    
+    //------------------------------
+    //Box's main view...
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.CSATscrollView.frame.origin.x, YOriginPoint, self.CSATscrollView.frame.size.width, boxHeight)];
+    YOriginPoint += boxHeight;
+    [self.CSATscrollView addSubview:boxView];
     
     
-    [myBackButton setTitleTextAttributes:attrb forState:UIControlStateNormal];
+    //------------------------------
+    //Box's Label...
+    UILabel *boxLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, self.CSATscrollView.frame.size.width, 15)];
+    [boxLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+    boxLabel.textColor = [UIColor colorWithRed:136.0/255.0 green:136.0/255.0 blue:136.0/255.0 alpha:1.0f];
     
-    item.leftBarButtonItem =myBackButton;
-    [self.cusUiNbNavBar popNavigationItemAnimated:NO];
+    if ([[element objectForKey:@"required"]isEqualToString:@""])
+    {
+        boxLabel.text = [element objectForKey:@"question"];
+    }else
+    {
+        boxLabel.text = [NSString stringWithFormat:@"%@ *",[element objectForKey:@"question"]];
+        
+        NSMutableAttributedString *attrib = [[NSMutableAttributedString alloc] initWithString:boxLabel.text];
+        [attrib addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(boxLabel.text.length-1, 1)];
+        [boxLabel setAttributedText:attrib];
+    }
     
-    [self.cusUiNbNavBar pushNavigationItem:item animated:NO];
-    [self.view addSubview:self.cusUiNbNavBar];
+    [boxView addSubview:boxLabel];
+    
+    
+    //------------------------------
+    //Box's Text Field OR UILabel...
+    
+    if([boxType isEqualToString:@"textInput"] || [boxType isEqualToString:@"customer_feedback"])
+    {
+        UITextField *boxDescription  = [[UITextField alloc] initWithFrame:CGRectMake(16, 16, screenW-32 , 40)];
+        //    boxDescription.text = @"Prasad";
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+        boxDescription.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+        boxDescription.delegate=self;
+        //    boxDescription.backgroundColor = [UIColor cyanColor];
+        NSNumber *tagNo =[element objectForKey:@"question_id"];
+        [boxDescription setTag:tagNo.integerValue];
+        boxDescription.placeholder = [element objectForKey:@"e_help_text"];
+        [boxView addSubview:boxDescription];
+    }else if([boxType isEqualToString:@"checkbox"] || [boxType isEqualToString:@"radio"] || [boxType isEqualToString:@"select"])
+    {
+        UILabel *boxDescription = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, screenW-32 , 24)];
+//        boxDescription.text = @"this is label description";
+        [boxDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+        boxDescription.textAlignment = NSTextAlignmentLeft;
+        [boxDescription setTag:10];
+        [boxView addSubview:boxDescription];
+    }
+    
+    
+    
+    //------------------------------
+    //Box's Image...
+    if(icon)
+    {
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+        CGRect imgFrame = imgView.frame;
+        imgFrame.origin.x = screenW - 32 - imgFrame.size.width;
+        imgFrame.origin.y = 16;
+        [imgView setFrame:imgFrame];
+        [boxView addSubview:imgView];
+    }
+    
+    //------------------------------
+    //Box's end line...
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, 63, screenW, 1)];
+    line.backgroundColor = [UIColor colorWithRed:221.0/255.0f green:221.0/255.0f blue:221.0/255.0f alpha:1.0f];
+    [boxView addSubview:line];
+    
+    return boxView;
+}
+
+
+- (void)makeTextInputBox:(NSDictionary*)element
+{
+    [self makeDefaultBox:element iconImage:nil];
+}
+
+- (void)makeFeedbackBox:(NSDictionary*)element
+{
+    [self makeDefaultBox:element iconImage:nil];
+}
+
+- (void)makeCheckBox:(NSDictionary*)element
+{
+    [self makeDefaultBox:element iconImage:@"select"];
+}
+
+- (void)makeRadioBox:(NSDictionary*)element
+{
+    [self makeDefaultBox:element iconImage:@"select"];
+}
+
+- (void)makeDropdownBox:(NSDictionary*)element
+{
+    [self makeDefaultBox:element iconImage:@"select"];
+}
+
+- (void)makeStarBox:(NSDictionary*)element
+{
+    UIView *viewBox = [self makeDefaultBox:element iconImage:nil];
+    
+    //--------
+    // add stars..
+    DLStarRatingControl *customNumberOfStars = [[DLStarRatingControl alloc] initWithFrame:viewBox.bounds andStars:5 atHeight:24];
+    customNumberOfStars.delegate = self;
+    NSNumber *tagNo =[element objectForKey:@"question_id"];
+    int tage = tagNo.integerValue;
+    
+    customNumberOfStars.tag = tage;
+    //    customNumberOfStars.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    customNumberOfStars.autoresizingMask =  UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [_cusCSATStarRating addObject:customNumberOfStars];
+    [viewBox addSubview:customNumberOfStars];
+}
+-(void)newRating:(DLStarRatingControl *)control rating:(float)rating
+{
+    //    self.stars.text = [NSString stringWithFormat:@"%0.1f star rating",rating];
+    starRating = rating;
+}
+
+
+- (void)makeSmileyBox:(NSDictionary*)element
+{
+    UIView *viewBox = [self makeDefaultBox:element iconImage:nil];
+    
+    //-----------------------------
+    // add Smiley functionality...
+    NSMutableArray* button2 = [NSMutableArray arrayWithCapacity:[[element objectForKey:@"answers"] count]];
+    CGRect btnRect =CGRectMake(16, 32, 30, 30);
+    for (int option = 0; option<5; option++)
+    {
+        RadioButton* btn = [[RadioButton alloc] initWithFrame:btnRect];
+        
+        [btn addTarget:self action:@selector(onSmileyClicked:) forControlEvents:UIControlEventValueChanged];
+        
+        btnRect.origin.x += 48;
+        //        [btn setTitle:optionTitle forState:UIControlStateNormal];
+        //        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        //        btn.titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        
+        switch (option) {
+            case 0:
+                
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-excellent-outline"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-excellent"] forState:UIControlStateSelected];
+                break;
+            case 1:
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-good-outline"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-good"] forState:UIControlStateSelected];
+                break;
+            case 2:
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-average-outline"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-average"] forState:UIControlStateSelected];
+                break;
+            case 3:
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-sad-outline"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-sad"] forState:UIControlStateSelected];
+                break;
+            case 4:
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-worst-outline"] forState:UIControlStateNormal];
+                [btn setBackgroundImage:[UIImage imageNamed:@"smiley-worst"] forState:UIControlStateSelected];
+                break;
+            default:
+                break;
+        }
+        
+        //        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        //        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+        
+        [viewBox addSubview:btn];
+        [button2 addObject:btn];
+    }
+    NSNumber *tagNo =[element objectForKey:@"question_id"];
+    int tage = tagNo.integerValue;
+    [button2[0] setTag:tage];
+    [button2[0] setGroupButtons:button2];
+    [_cusCSATSmileyScales addObject:button2];
 }
 
 -(void)performSubClassWork
@@ -123,70 +316,69 @@
     if (dict!=nil) {
         arrViews =[[dict objectForKey:@"response"]objectForKey:@"form"];
         
-        YOriginPoint =24;
+        //YOriginPoint = 64;
         for (int i=1; i<=arrViews.count; i++) {
             
             NSDictionary *element =[[arrViews objectAtIndex:i-1]objectForKey:@"question_container"] ;
             NSString *elementToRender = [[[arrViews objectAtIndex:i-1]objectForKey:@"question_container"] objectForKey:@"type"];
             if ([elementToRender isEqualToString:@"radio"]) {
                 
-                [self makeRadioButtons:element];
+                [self makeRadioBox:element];
             }
             else if ([elementToRender isEqualToString:@"checkbox"]){
                 
-                [self makeChekBoxes:element];
+                [self makeCheckBox:element];
             }
             else if ([elementToRender isEqualToString:@"textArea"]){
-                
-                [self makeTextArea:element];
+                NSLog(@"->textArea");
+                //[self makeTextArea:element];
             }
             else if ([elementToRender isEqualToString:@"textInput"]){
-                
-                [self makeTextInput:element];
+                NSLog(@"->textInput");
+                [self makeTextInputBox:element];
             }
             
             else if ([elementToRender isEqualToString:@"select"]){
                 
-                [self makeDropDownBox:element];
+                [self makeDropdownBox:element];
             }
             
             else if ([elementToRender isEqualToString:@"customer_feedback"]){
-                
-                [self makeQuestionBox:element];
+                NSLog(@"->customer_feedback");
+                [self makeFeedbackBox:element];
             }
             else if ([elementToRender isEqualToString:@"five_star_rating"]){
-                [self makeStarView:element];
+                [self makeStarBox:element];
             }
             else if ([elementToRender isEqualToString:@"smiley"])
             {
-                [self makeSmiley:element];
+                [self makeSmileyBox:element];
             }
         }
-        YOriginPoint+=60;
-        UIButton *submit = [[UIButton alloc] init];
-        [submit setTitle:@"SUBMIT" forState:UIControlStateNormal];
-        [submit setFrame:CGRectMake(0, 0, 180, 40)];
-        [submit setCenter:CGPointMake(_CSATscrollView.frame.size.width/2, YOriginPoint-32)];
-        [submit setBackgroundColor:[UIColor colorWithRed:89.0/255.0 green:89.0/255.0 blue:89.0/255.0 alpha:1.0]];
-        [submit.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
-        [submit setTitleEdgeInsets:UIEdgeInsetsMake(16, 24, 16, 24)];
-        [submit.layer setCornerRadius:3.0f];
-        [_CSATscrollView addSubview:submit];
-        [submit addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
+//        YOriginPoint+=60;
+//        UIButton *submit = [[UIButton alloc] init];
+//        [submit setTitle:@"SUBMIT" forState:UIControlStateNormal];
+//        [submit setFrame:CGRectMake(0, 0, 180, 40)];
+//        [submit setCenter:CGPointMake(_CSATscrollView.frame.size.width/2, YOriginPoint-32)];
+//        [submit setBackgroundColor:[UIColor colorWithRed:89.0/255.0 green:89.0/255.0 blue:89.0/255.0 alpha:1.0]];
+//        [submit.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
+//        [submit setTitleEdgeInsets:UIEdgeInsetsMake(16, 24, 16, 24)];
+//        [submit.layer setCornerRadius:3.0f];
+//        [_CSATscrollView addSubview:submit];
+//        [submit addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         //**** Do not disturb this statement position or scrollview won't work. ***///
         //**** YOriginPoint increament after each element is rendered on screen. **///
-        _CSATscrollView.contentSize = CGSizeMake(self.CSATscrollView.frame.size.width, YOriginPoint);
+        _CSATscrollView.contentSize = CGSizeMake(self.CSATscrollView.frame.size.width, YOriginPoint+10);
         // Do any additional setup after loading the view from its nib.
         [self hideActivityIndicator];
         
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+/*
 #pragma mark- Render View
 -(void)makeTextInput:(NSDictionary*)element{
     
@@ -589,12 +781,8 @@
 }
 
 
--(void)newRating:(DLStarRatingControl *)control rating:(float)rating
-{
-    //    self.stars.text = [NSString stringWithFormat:@"%0.1f star rating",rating];
-    starRating = rating;
-}
 
+*/
 
 #pragma mark - Smiely response
 -(void)makeSmiley:(NSDictionary *)element{
@@ -691,6 +879,7 @@
     
     smileyButton = button.selectedButton;
 }
+
 
 #pragma mark - sumbit process
 -(BOOL)validateAllElements{
@@ -1079,13 +1268,14 @@
 
 -(IBAction) submit :(id)sender{
     
-    
-    if ([self validateAllElements]) {
-        
-        [self submitParams];
-    }
+    [self submitForm];
 }
 
+- (void)submitForm
+{
+    if ([self validateAllElements])
+        [self submitParams];
+}
 #pragma mark - scrollView delegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView

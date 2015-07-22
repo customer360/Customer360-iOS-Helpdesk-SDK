@@ -55,6 +55,35 @@
 		26EC25841B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC257C1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m */; };
 		26EC25851B5FA0C100147A15 /* Cus360ChatHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC257E1B5FA0C100147A15 /* Cus360ChatHistoryController.m */; };
 		26EC25861B5FA0C100147A15 /* Cus360ChatHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EC257F1B5FA0C100147A15 /* Cus360ChatHistoryController.xib */; };
+		26EC25A41B5FD80E00147A15 /* smiley-average-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25871B5FD80E00147A15 /* smiley-average-outline.png */; };
+		26EC25A51B5FD80E00147A15 /* smiley-average-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25881B5FD80E00147A15 /* smiley-average-outline@2x.png */; };
+		26EC25A61B5FD80E00147A15 /* smiley-average-outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25891B5FD80E00147A15 /* smiley-average-outline@3x.png */; };
+		26EC25A71B5FD80E00147A15 /* smiley-average.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258A1B5FD80E00147A15 /* smiley-average.png */; };
+		26EC25A81B5FD80E00147A15 /* smiley-average@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258B1B5FD80E00147A15 /* smiley-average@2x.png */; };
+		26EC25A91B5FD80E00147A15 /* smiley-average@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258C1B5FD80E00147A15 /* smiley-average@3x.png */; };
+		26EC25AA1B5FD80E00147A15 /* smiley-excellent-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258D1B5FD80E00147A15 /* smiley-excellent-outline.png */; };
+		26EC25AB1B5FD80E00147A15 /* smiley-excellent-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258E1B5FD80E00147A15 /* smiley-excellent-outline@2x.png */; };
+		26EC25AC1B5FD80E00147A15 /* smiley-excellent-outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC258F1B5FD80E00147A15 /* smiley-excellent-outline@3x.png */; };
+		26EC25AD1B5FD80E00147A15 /* smiley-excellent.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25901B5FD80E00147A15 /* smiley-excellent.png */; };
+		26EC25AE1B5FD80E00147A15 /* smiley-excellent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25911B5FD80E00147A15 /* smiley-excellent@2x.png */; };
+		26EC25AF1B5FD80E00147A15 /* smiley-excellent@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25921B5FD80E00147A15 /* smiley-excellent@3x.png */; };
+		26EC25B01B5FD80E00147A15 /* smiley-good-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25931B5FD80E00147A15 /* smiley-good-outline.png */; };
+		26EC25B11B5FD80E00147A15 /* smiley-good-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25941B5FD80E00147A15 /* smiley-good-outline@2x.png */; };
+		26EC25B21B5FD80E00147A15 /* smiley-good-outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25951B5FD80E00147A15 /* smiley-good-outline@3x.png */; };
+		26EC25B31B5FD80E00147A15 /* smiley-good.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25961B5FD80E00147A15 /* smiley-good.png */; };
+		26EC25B41B5FD80E00147A15 /* smiley-good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25971B5FD80E00147A15 /* smiley-good@2x.png */; };
+		26EC25B51B5FD80E00147A15 /* smiley-good@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25981B5FD80E00147A15 /* smiley-good@3x.png */; };
+		26EC25B61B5FD80E00147A15 /* smiley-sad-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25991B5FD80E00147A15 /* smiley-sad-outline.png */; };
+		26EC25B71B5FD80E00147A15 /* smiley-sad-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259A1B5FD80E00147A15 /* smiley-sad-outline@2x.png */; };
+		26EC25B81B5FD80E00147A15 /* smiley-sad-outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259B1B5FD80E00147A15 /* smiley-sad-outline@3x.png */; };
+		26EC25B91B5FD80E00147A15 /* smiley-sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259C1B5FD80E00147A15 /* smiley-sad.png */; };
+		26EC25BA1B5FD80E00147A15 /* smiley-sad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259D1B5FD80E00147A15 /* smiley-sad@2x.png */; };
+		26EC25BB1B5FD80E00147A15 /* smiley-sad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259E1B5FD80E00147A15 /* smiley-sad@3x.png */; };
+		26EC25BC1B5FD80E00147A15 /* smiley-worst-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC259F1B5FD80E00147A15 /* smiley-worst-outline.png */; };
+		26EC25BD1B5FD80E00147A15 /* smiley-worst-outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25A01B5FD80E00147A15 /* smiley-worst-outline@2x.png */; };
+		26EC25BE1B5FD80E00147A15 /* smiley-worst-outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25A11B5FD80E00147A15 /* smiley-worst-outline@3x.png */; };
+		26EC25BF1B5FD80E00147A15 /* smiley-worst.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25A21B5FD80E00147A15 /* smiley-worst.png */; };
+		26EC25C01B5FD80E00147A15 /* smiley-worst@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25A31B5FD80E00147A15 /* smiley-worst@2x.png */; };
 		C815EDB61AE91346009DDAB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAE51AE28BD000A75C46 /* Foundation.framework */; };
 		C815EDB71AE91353009DDAB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAD91AE28B7400A75C46 /* CoreLocation.framework */; };
 		C815EDB81AE91361009DDAB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DADB1AE28B7C00A75C46 /* CoreData.framework */; };
@@ -836,6 +865,35 @@
 		26EC257D1B5FA0C100147A15 /* Cus360ChatHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cus360ChatHistoryController.h; sourceTree = "<group>"; };
 		26EC257E1B5FA0C100147A15 /* Cus360ChatHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cus360ChatHistoryController.m; sourceTree = "<group>"; };
 		26EC257F1B5FA0C100147A15 /* Cus360ChatHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cus360ChatHistoryController.xib; sourceTree = "<group>"; };
+		26EC25871B5FD80E00147A15 /* smiley-average-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average-outline.png"; sourceTree = "<group>"; };
+		26EC25881B5FD80E00147A15 /* smiley-average-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average-outline@2x.png"; sourceTree = "<group>"; };
+		26EC25891B5FD80E00147A15 /* smiley-average-outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average-outline@3x.png"; sourceTree = "<group>"; };
+		26EC258A1B5FD80E00147A15 /* smiley-average.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average.png"; sourceTree = "<group>"; };
+		26EC258B1B5FD80E00147A15 /* smiley-average@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average@2x.png"; sourceTree = "<group>"; };
+		26EC258C1B5FD80E00147A15 /* smiley-average@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-average@3x.png"; sourceTree = "<group>"; };
+		26EC258D1B5FD80E00147A15 /* smiley-excellent-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent-outline.png"; sourceTree = "<group>"; };
+		26EC258E1B5FD80E00147A15 /* smiley-excellent-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent-outline@2x.png"; sourceTree = "<group>"; };
+		26EC258F1B5FD80E00147A15 /* smiley-excellent-outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent-outline@3x.png"; sourceTree = "<group>"; };
+		26EC25901B5FD80E00147A15 /* smiley-excellent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent.png"; sourceTree = "<group>"; };
+		26EC25911B5FD80E00147A15 /* smiley-excellent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent@2x.png"; sourceTree = "<group>"; };
+		26EC25921B5FD80E00147A15 /* smiley-excellent@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-excellent@3x.png"; sourceTree = "<group>"; };
+		26EC25931B5FD80E00147A15 /* smiley-good-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good-outline.png"; sourceTree = "<group>"; };
+		26EC25941B5FD80E00147A15 /* smiley-good-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good-outline@2x.png"; sourceTree = "<group>"; };
+		26EC25951B5FD80E00147A15 /* smiley-good-outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good-outline@3x.png"; sourceTree = "<group>"; };
+		26EC25961B5FD80E00147A15 /* smiley-good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good.png"; sourceTree = "<group>"; };
+		26EC25971B5FD80E00147A15 /* smiley-good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good@2x.png"; sourceTree = "<group>"; };
+		26EC25981B5FD80E00147A15 /* smiley-good@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-good@3x.png"; sourceTree = "<group>"; };
+		26EC25991B5FD80E00147A15 /* smiley-sad-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad-outline.png"; sourceTree = "<group>"; };
+		26EC259A1B5FD80E00147A15 /* smiley-sad-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad-outline@2x.png"; sourceTree = "<group>"; };
+		26EC259B1B5FD80E00147A15 /* smiley-sad-outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad-outline@3x.png"; sourceTree = "<group>"; };
+		26EC259C1B5FD80E00147A15 /* smiley-sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad.png"; sourceTree = "<group>"; };
+		26EC259D1B5FD80E00147A15 /* smiley-sad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad@2x.png"; sourceTree = "<group>"; };
+		26EC259E1B5FD80E00147A15 /* smiley-sad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-sad@3x.png"; sourceTree = "<group>"; };
+		26EC259F1B5FD80E00147A15 /* smiley-worst-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-worst-outline.png"; sourceTree = "<group>"; };
+		26EC25A01B5FD80E00147A15 /* smiley-worst-outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-worst-outline@2x.png"; sourceTree = "<group>"; };
+		26EC25A11B5FD80E00147A15 /* smiley-worst-outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-worst-outline@3x.png"; sourceTree = "<group>"; };
+		26EC25A21B5FD80E00147A15 /* smiley-worst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-worst.png"; sourceTree = "<group>"; };
+		26EC25A31B5FD80E00147A15 /* smiley-worst@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smiley-worst@2x.png"; sourceTree = "<group>"; };
 		C803DAD71AE28B5C00A75C46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C803DAD91AE28B7400A75C46 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		C803DADB1AE28B7C00A75C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
@@ -1338,6 +1396,35 @@
 		26E265F21B59234300D7D6D3 /* iconsUI */ = {
 			isa = PBXGroup;
 			children = (
+				26EC25871B5FD80E00147A15 /* smiley-average-outline.png */,
+				26EC25881B5FD80E00147A15 /* smiley-average-outline@2x.png */,
+				26EC25891B5FD80E00147A15 /* smiley-average-outline@3x.png */,
+				26EC258A1B5FD80E00147A15 /* smiley-average.png */,
+				26EC258B1B5FD80E00147A15 /* smiley-average@2x.png */,
+				26EC258C1B5FD80E00147A15 /* smiley-average@3x.png */,
+				26EC258D1B5FD80E00147A15 /* smiley-excellent-outline.png */,
+				26EC258E1B5FD80E00147A15 /* smiley-excellent-outline@2x.png */,
+				26EC258F1B5FD80E00147A15 /* smiley-excellent-outline@3x.png */,
+				26EC25901B5FD80E00147A15 /* smiley-excellent.png */,
+				26EC25911B5FD80E00147A15 /* smiley-excellent@2x.png */,
+				26EC25921B5FD80E00147A15 /* smiley-excellent@3x.png */,
+				26EC25931B5FD80E00147A15 /* smiley-good-outline.png */,
+				26EC25941B5FD80E00147A15 /* smiley-good-outline@2x.png */,
+				26EC25951B5FD80E00147A15 /* smiley-good-outline@3x.png */,
+				26EC25961B5FD80E00147A15 /* smiley-good.png */,
+				26EC25971B5FD80E00147A15 /* smiley-good@2x.png */,
+				26EC25981B5FD80E00147A15 /* smiley-good@3x.png */,
+				26EC25991B5FD80E00147A15 /* smiley-sad-outline.png */,
+				26EC259A1B5FD80E00147A15 /* smiley-sad-outline@2x.png */,
+				26EC259B1B5FD80E00147A15 /* smiley-sad-outline@3x.png */,
+				26EC259C1B5FD80E00147A15 /* smiley-sad.png */,
+				26EC259D1B5FD80E00147A15 /* smiley-sad@2x.png */,
+				26EC259E1B5FD80E00147A15 /* smiley-sad@3x.png */,
+				26EC259F1B5FD80E00147A15 /* smiley-worst-outline.png */,
+				26EC25A01B5FD80E00147A15 /* smiley-worst-outline@2x.png */,
+				26EC25A11B5FD80E00147A15 /* smiley-worst-outline@3x.png */,
+				26EC25A21B5FD80E00147A15 /* smiley-worst.png */,
+				26EC25A31B5FD80E00147A15 /* smiley-worst@2x.png */,
 				26E265F31B59234300D7D6D3 /* album.png */,
 				26E265F41B59234300D7D6D3 /* album@2x.png */,
 				26E265F51B59234300D7D6D3 /* album@3x.png */,
@@ -2895,15 +2982,19 @@
 				26E266291B59234300D7D6D3 /* album@2x.png in Resources */,
 				C8C2AF6D1AA57C09008BAF9D /* notselectedcheckbox@2x.png in Resources */,
 				26E266511B59234300D7D6D3 /* select@2x.png in Resources */,
+				26EC25A51B5FD80E00147A15 /* smiley-average-outline@2x.png in Resources */,
 				C8C01AE91ABC46A000FB875F /* cus_consumer_icon.png in Resources */,
+				26EC25BA1B5FD80E00147A15 /* smiley-sad@2x.png in Resources */,
 				C8C509751AC1764F00B3F265 /* bad-active@2x.png in Resources */,
 				26EC25821B5FA0C100147A15 /* ChatHistoryDetailViewController.xib in Resources */,
 				C8C01AEB1ABC46C700FB875F /* cus_agent_icon.png in Resources */,
 				C8C509811AC1764F00B3F265 /* worst-active@2x.png in Resources */,
 				26E2664D1B59234300D7D6D3 /* remove.png in Resources */,
+				26EC25B11B5FD80E00147A15 /* smiley-good-outline@2x.png in Resources */,
 				F8733DBE1B441F8900E9A6BA /* leftArrow.png in Resources */,
 				C8C5097C1AC1764F00B3F265 /* good-active.png in Resources */,
 				26E266351B59234300D7D6D3 /* camera@2x.png in Resources */,
+				26EC25B71B5FD80E00147A15 /* smiley-sad-outline@2x.png in Resources */,
 				C8CBF4E11AC2C00000151372 /* star_highlighted-darker.png in Resources */,
 				C8CBF4E01AC2C00000151372 /* star@2x.png in Resources */,
 				26E266301B59234300D7D6D3 /* back@3x.png in Resources */,
@@ -2911,13 +3002,17 @@
 				26E266391B59234300D7D6D3 /* checkbox@3x.png in Resources */,
 				C8C2AF6A1AA57C09008BAF9D /* checked.png in Resources */,
 				26E266281B59234300D7D6D3 /* album.png in Resources */,
+				26EC25AD1B5FD80E00147A15 /* smiley-excellent.png in Resources */,
+				26EC25B51B5FD80E00147A15 /* smiley-good@3x.png in Resources */,
 				26E266571B59234300D7D6D3 /* star@2x.png in Resources */,
 				C8D68FF11AD4FC4B0097EB2E /* checkbox-selected@2x.png in Resources */,
 				C8C509731AC1764F00B3F265 /* average@2x.png in Resources */,
 				26E266371B59234300D7D6D3 /* checkbox.png in Resources */,
 				26E2662B1B59234300D7D6D3 /* attachment.png in Resources */,
 				C8CBF4DF1AC2C00000151372 /* star.png in Resources */,
+				26EC25B91B5FD80E00147A15 /* smiley-sad.png in Resources */,
 				C8C509701AC1764F00B3F265 /* average-active.png in Resources */,
+				26EC25A71B5FD80E00147A15 /* smiley-average.png in Resources */,
 				C8C52F971AB19A3B00C4A26E /* ChatViewController.xib in Resources */,
 				C8CBF4E41AC2C00000151372 /* star_highlighted@2x.png in Resources */,
 				26E266531B59234300D7D6D3 /* star-o.png in Resources */,
@@ -2932,6 +3027,8 @@
 				C8C2AF741AA57C09008BAF9D /* unchecked@2x.png in Resources */,
 				26E266521B59234300D7D6D3 /* select@3x.png in Resources */,
 				26E266501B59234300D7D6D3 /* select.png in Resources */,
+				26EC25B21B5FD80E00147A15 /* smiley-good-outline@3x.png in Resources */,
+				26EC25AE1B5FD80E00147A15 /* smiley-excellent@2x.png in Resources */,
 				C8C2AF6F1AA57C09008BAF9D /* PreChatViewController.xib in Resources */,
 				C8C52F921AB193DC00C4A26E /* WaitingScreen.png in Resources */,
 				26EC25801B5FA0C100147A15 /* chat.png in Resources */,
@@ -2941,8 +3038,10 @@
 				26E266591B59234300D7D6D3 /* waiting.png in Resources */,
 				C8C2AF6B1AA57C09008BAF9D /* checked@2x.png in Resources */,
 				C8D69D9C1AD40FDA00F4BC06 /* arrow.png in Resources */,
+				26EC25A91B5FD80E00147A15 /* smiley-average@3x.png in Resources */,
 				C8D68FEF1AD4FC4B0097EB2E /* checkbox-default@2x.png in Resources */,
 				C8C509831AC1764F00B3F265 /* worst@2x.png in Resources */,
+				26EC25BB1B5FD80E00147A15 /* smiley-sad@3x.png in Resources */,
 				26E2662D1B59234300D7D6D3 /* attachment@3x.png in Resources */,
 				C8E7B0601B15A002008AAA38 /* iOS_device_types.txt in Resources */,
 				26E266581B59234300D7D6D3 /* star@3x.png in Resources */,
@@ -2955,19 +3054,27 @@
 				C8D68FEE1AD4FC4B0097EB2E /* checkbox-default.png in Resources */,
 				C8C2AF6C1AA57C09008BAF9D /* notselectedcheckbox.png in Resources */,
 				C8C01AF11ABC576D00FB875F /* PostChatViewController.xib in Resources */,
+				26EC25A81B5FD80E00147A15 /* smiley-average@2x.png in Resources */,
 				26E2663C1B59234300D7D6D3 /* clock@3x.png in Resources */,
 				26E266311B59234300D7D6D3 /* calendar.png in Resources */,
 				C8C2AF1B1AA57B2D008BAF9D /* LaunchScreen.xib in Resources */,
 				C8C2AF181AA57B2D008BAF9D /* Images.xcassets in Resources */,
 				C8CBF4E21AC2C00000151372 /* star_highlighted-darker@2x.png in Resources */,
+				26EC25B41B5FD80E00147A15 /* smiley-good@2x.png in Resources */,
 				C8C509761AC1764F00B3F265 /* bad.png in Resources */,
 				C8C509791AC1764F00B3F265 /* excellent-active@2x.png in Resources */,
 				C8CBF4E31AC2C00000151372 /* star_highlighted.png in Resources */,
 				26E2664F1B59234300D7D6D3 /* remove@3x.png in Resources */,
 				C8C2B1721AA58AFF008BAF9D /* build-libidn.sh in Resources */,
 				C8C2AF361AA57B61008BAF9D /* SVProgressHUD.bundle in Resources */,
+				26EC25B01B5FD80E00147A15 /* smiley-good-outline.png in Resources */,
+				26EC25BD1B5FD80E00147A15 /* smiley-worst-outline@2x.png in Resources */,
+				26EC25AF1B5FD80E00147A15 /* smiley-excellent@3x.png in Resources */,
+				26EC25B81B5FD80E00147A15 /* smiley-sad-outline@3x.png in Resources */,
 				26E2662E1B59234300D7D6D3 /* back.png in Resources */,
+				26EC25AC1B5FD80E00147A15 /* smiley-excellent-outline@3x.png in Resources */,
 				26E2662F1B59234300D7D6D3 /* back@2x.png in Resources */,
+				26EC25AB1B5FD80E00147A15 /* smiley-excellent-outline@2x.png in Resources */,
 				26E9580B1B5CCFF7009D62DE /* PreChatOptionsVC.xib in Resources */,
 				26EC25861B5FA0C100147A15 /* Cus360ChatHistoryController.xib in Resources */,
 				26E2665B1B59234300D7D6D3 /* waiting@3x.png in Resources */,
@@ -2976,15 +3083,19 @@
 				C8D68FF41AD4FC4B0097EB2E /* radio-selected.png in Resources */,
 				C8C2AF731AA57C09008BAF9D /* unchecked.png in Resources */,
 				26E2662C1B59234300D7D6D3 /* attachment@2x.png in Resources */,
+				26EC25C01B5FD80E00147A15 /* smiley-worst@2x.png in Resources */,
 				C8D69D9D1AD40FDA00F4BC06 /* arrow@2x.png in Resources */,
 				26E266361B59234300D7D6D3 /* camera@3x.png in Resources */,
 				F8733DBF1B441F8900E9A6BA /* leftArrow@2x.png in Resources */,
+				26EC25A61B5FD80E00147A15 /* smiley-average-outline@3x.png in Resources */,
 				C8D68FF21AD4FC4B0097EB2E /* radio-default.png in Resources */,
 				C8C5097B1AC1764F00B3F265 /* excellent@2x.png in Resources */,
 				26E2663B1B59234300D7D6D3 /* clock@2x.png in Resources */,
+				26EC25BF1B5FD80E00147A15 /* smiley-worst.png in Resources */,
 				C8C5097E1AC1764F00B3F265 /* good.png in Resources */,
 				C8C509781AC1764F00B3F265 /* excellent-active.png in Resources */,
 				C8C5097F1AC1764F00B3F265 /* good@2x.png in Resources */,
+				26EC25AA1B5FD80E00147A15 /* smiley-excellent-outline.png in Resources */,
 				C8D68FF71AD4FC4B0097EB2E /* start-default@2x.png in Resources */,
 				26E2663D1B59234300D7D6D3 /* ok.png in Resources */,
 				C8C327851AD29A0C0039F921 /* customer128.png in Resources */,
@@ -2992,15 +3103,20 @@
 				26E2663F1B59234300D7D6D3 /* ok@3x.png in Resources */,
 				26E266561B59234300D7D6D3 /* star.png in Resources */,
 				26E266341B59234300D7D6D3 /* camera.png in Resources */,
+				26EC25BE1B5FD80E00147A15 /* smiley-worst-outline@3x.png in Resources */,
 				C8D68FF61AD4FC4B0097EB2E /* start-default.png in Resources */,
 				26E266541B59234300D7D6D3 /* star-o@2x.png in Resources */,
 				C8C2B16D1AA58AFF008BAF9D /* README.txt in Resources */,
 				26E2663A1B59234300D7D6D3 /* clock.png in Resources */,
+				26EC25A41B5FD80E00147A15 /* smiley-average-outline.png in Resources */,
 				C8C2AF711AA57C09008BAF9D /* selectedcheckbox.png in Resources */,
 				C8C509821AC1764F00B3F265 /* worst.png in Resources */,
 				C8C509581AC15FB100B3F265 /* CUSThankYouViewController.xib in Resources */,
+				26EC25BC1B5FD80E00147A15 /* smiley-worst-outline.png in Resources */,
 				26E2663E1B59234300D7D6D3 /* ok@2x.png in Resources */,
+				26EC25B61B5FD80E00147A15 /* smiley-sad-outline.png in Resources */,
 				26EC25831B5FA0C100147A15 /* Cus360ChatHistoryCell.xib in Resources */,
+				26EC25B31B5FD80E00147A15 /* smiley-good.png in Resources */,
 				26E2662A1B59234300D7D6D3 /* album@3x.png in Resources */,
 				C8C5097D1AC1764F00B3F265 /* good-active@2x.png in Resources */,
 			);

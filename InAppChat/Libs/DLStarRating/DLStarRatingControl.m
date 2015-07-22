@@ -25,8 +25,8 @@
 - (void)setupView {
 	self.clipsToBounds = YES;
 	currentIdx = -1;
-	star = [UIImage imageNamed:@"start-default"] ;
-	highlightedStar = [UIImage imageNamed:@"start-selected"];
+	star = [UIImage imageNamed:@"star-o"] ;
+	highlightedStar = [UIImage imageNamed:@"star"];
 
 	for (int i=0; i<numberOfStars; i++) {
 		DLStarView *v = [[DLStarView alloc] initWithDefault:self.star highlighted:self.highlightedStar position:i allowFractions:NO];
