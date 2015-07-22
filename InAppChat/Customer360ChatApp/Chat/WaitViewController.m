@@ -34,33 +34,50 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    [self loadNavigationBar];
+    [self loadNavigationBarItem];
     [self performSubClassWork];
+    //[self loadScreenElement];
 }
--(void)loadNavigationBar{
-    {
-        [super loadNavigationBar];
-        
-        UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Connecting..."];
-        
-        UIBarButtonItem *myBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(finishThisPage)];
-       // NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"chalkdust" size:15.0], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
-        NSDictionary *attrb = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, [self colorWithHexString:[[Cus360Chat sharedInstance] getNavigationBarTitleColor]], NSForegroundColorAttributeName, nil];
 
-        [myBackButton setTitleTextAttributes:attrb forState:UIControlStateNormal];
-
-        item.leftBarButtonItem =myBackButton;
-        [self.cusUiNbNavBar popNavigationItemAnimated:NO];
-        
-        [self.cusUiNbNavBar pushNavigationItem:item animated:NO];
-        [self.view addSubview:self.cusUiNbNavBar];
-    }
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"WaitingView -> viewWillDisappear");
 }
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"WaitingView -> viewDidDisappear");
+}
+
+-(void)loadNavigationBarItem{
+    
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Connecting..."];
+    
+    UIBarButtonItem *leftItem = [self getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
+
+    [self loadNavigationBarWithItem:item leftItem:leftItem rightItem:nil];
+}
+
 -(void)performSubClassWork{
 
     [[Cus360Chat sharedInstance] connect];
 
 }
+
+- (void)loadScreenElement
+{
+    float screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    float screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    
+    //----------------
+    // Image...
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"waiting"]];
+    [self.view addSubview:imgView];
+    CGRect frame = imgView.frame;
+    frame.origin.x = screenWidth/2;
+    frame.origin.y = screenHeight/4;
+    imgView.frame = frame;
+}
+
 /*-(void)sendPing{
     XMPPPing *new = [[XMPPPing alloc] init];
     [new addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)];

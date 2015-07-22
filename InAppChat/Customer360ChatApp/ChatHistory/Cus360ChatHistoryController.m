@@ -143,7 +143,9 @@
 -(void)doONFailToFetchPreChatDetails:(id)cusArgIdResponseObject{
     NSLog(@"%@", cusArgIdResponseObject);
     [self hideActivityIndicator];
-    //[self showErrorFromResponse:cusArgIdResponseObject];
+    ChatHistoryDetailViewController *chatVC = [[ChatHistoryDetailViewController alloc] initWithNibName:@"ChatHistoryDetailViewController" bundle:nil];
+    //chatVC.messageDict = (NSMutableDictionary *)cusArgIdResponseObject;
+    [self presentViewController:chatVC animated:YES completion:nil];
 }
 
 #pragma mark ----

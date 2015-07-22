@@ -1236,16 +1236,16 @@ NSString * const mStrKeyEnableAutoFormSubmit= @"NO";
                 chatViewController = [[ChatViewController alloc]initWithNibName:@"ChatViewController" bundle:nil];
                 chatViewController.agentName = agent_name;
                 
-                [_cusBaseView dismissViewControllerAnimated:YES completion:nil];
-                    
-                [_cusBaseView presentViewController:chatViewController animated:YES completion:nil];
+//                [_cusBaseView dismissViewControllerAnimated:YES completion:nil];
+//                    
+//                [_cusBaseView presentViewController:chatViewController animated:YES completion:nil];
 
-//                [UIView animateWithDuration:0.05 animations:^{
-//                    [_cusBaseView dismissViewControllerAnimated:NO completion:^{
-//                        
-//                        [_cusBaseView presentViewController:chatViewController animated:YES completion:nil];
-//                    }];
-//                }];
+                [UIView animateWithDuration:0.05 animations:^{
+                    [_cusBaseView dismissViewControllerAnimated:NO completion:^{
+                        
+                        [_cusBaseView presentViewController:chatViewController animated:YES completion:nil];
+                    }];
+                }];
             }
         }
         //        }

@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CUSThankYouViewController">
             <connections>
-                <outlet property="cusArgUilTicketResp" destination="wHq-sw-a6Q" id="YGH-DY-gIN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,74 +15,38 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2QF-Rb-JOx" userLabel="content view">
-                    <rect key="frame" x="133" y="117" width="334" height="366"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thank_you.png" translatesAutoresizingMaskIntoConstraints="NO" id="eQC-4j-Lnh">
-                            <rect key="frame" x="103" y="8" width="130" height="123"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="123" id="aNo-WX-5jh"/>
-                                <constraint firstAttribute="width" constant="130" id="qbT-Y8-uM0"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msa-Zs-XEd">
-                            <rect key="frame" x="117" y="143" width="100" height="36"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="36" id="C2G-Vb-KWh"/>
-                                <constraint firstAttribute="width" constant="100" id="Wfy-hF-C5H"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <color key="textColor" red="0.65098039215686276" green="0.65490196078431373" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHq-sw-a6Q">
-                            <rect key="frame" x="38" y="191" width="262" height="80"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="mK3-yq-bwD"/>
-                            </constraints>
-                            <attributedString key="attributedText"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7t-cy-qpX">
-                            <rect key="frame" x="127" y="295" width="85" height="30"/>
-                            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="85" id="hjt-UU-0OE"/>
-                            </constraints>
-                            <state key="normal" title="Close">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="doOnCloseButtonCliked:" destination="-1" eventType="touchUpInside" id="wU0-aY-0jV"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thank You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-Ha-IHh">
+                    <rect key="frame" x="159" y="182" width="282" height="32"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                    <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for your time and interest in providing us feedback" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlQ-fx-pWY">
+                    <rect key="frame" x="148" y="212" width="304" height="43"/>
                     <constraints>
-                        <constraint firstItem="eQC-4j-Lnh" firstAttribute="top" secondItem="2QF-Rb-JOx" secondAttribute="top" constant="8" id="9iM-ot-EFk"/>
-                        <constraint firstItem="msa-Zs-XEd" firstAttribute="top" secondItem="eQC-4j-Lnh" secondAttribute="bottom" constant="12" id="Auw-xh-cAB"/>
-                        <constraint firstItem="wHq-sw-a6Q" firstAttribute="top" secondItem="msa-Zs-XEd" secondAttribute="bottom" constant="12" id="GOx-RL-IgD"/>
-                        <constraint firstAttribute="height" constant="366" id="I7M-3W-aJr"/>
-                        <constraint firstItem="wHq-sw-a6Q" firstAttribute="leading" secondItem="2QF-Rb-JOx" secondAttribute="leading" constant="38" id="L2z-QL-dD6"/>
-                        <constraint firstAttribute="centerX" secondItem="eQC-4j-Lnh" secondAttribute="centerX" constant="-1" id="LUx-Vt-pma"/>
-                        <constraint firstAttribute="width" constant="334" id="PHQ-qR-ZV3"/>
-                        <constraint firstItem="eQC-4j-Lnh" firstAttribute="centerX" secondItem="msa-Zs-XEd" secondAttribute="centerX" constant="1" id="VH3-1n-Las"/>
-                        <constraint firstItem="m7t-cy-qpX" firstAttribute="top" secondItem="wHq-sw-a6Q" secondAttribute="bottom" constant="24" id="lKB-pk-9Su"/>
-                        <constraint firstAttribute="centerX" secondItem="m7t-cy-qpX" secondAttribute="centerX" constant="-2.5" id="qar-BR-dve"/>
-                        <constraint firstAttribute="centerX" secondItem="wHq-sw-a6Q" secondAttribute="centerX" constant="-2" id="rmC-3w-6n1"/>
+                        <constraint firstAttribute="height" constant="43" id="RuM-qW-edU"/>
+                        <constraint firstAttribute="width" constant="304" id="bGP-3Z-Dby"/>
                     </constraints>
-                </view>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="agent128.png" translatesAutoresizingMaskIntoConstraints="NO" id="hge-6i-4W2">
+                    <rect key="frame" x="236" y="50" width="128" height="128"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="2QF-Rb-JOx" secondAttribute="centerX" id="33x-2E-2zD"/>
-                <constraint firstAttribute="centerY" secondItem="2QF-Rb-JOx" secondAttribute="centerY" id="bco-5d-65S"/>
+                <constraint firstAttribute="centerX" secondItem="hge-6i-4W2" secondAttribute="centerX" id="9U9-6K-XE0"/>
+                <constraint firstAttribute="centerX" secondItem="sAS-Ha-IHh" secondAttribute="centerX" id="Mcr-H2-Hxr"/>
+                <constraint firstAttribute="centerX" secondItem="vlQ-fx-pWY" secondAttribute="centerX" id="R8i-mK-3d9"/>
+                <constraint firstItem="vlQ-fx-pWY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="212" id="c5r-ch-G0l"/>
+                <constraint firstItem="sAS-Ha-IHh" firstAttribute="top" secondItem="hge-6i-4W2" secondAttribute="bottom" constant="4" id="fn4-Iv-Yx0"/>
+                <constraint firstItem="hge-6i-4W2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="ny1-if-1si"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="thank_you.png" width="327" height="310"/>
+        <image name="agent128.png" width="128" height="128"/>
     </resources>
 </document>

@@ -25,9 +25,25 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self loadNavigationBarItem];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)loadNavigationBarItem{
+    
+    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Feedback"];
+    
+    UIBarButtonItem *leftItem = [self getNavigationBackButtonWithTarget:self action:@selector(finishThisPage)];
+    
+   // UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Chat" style:UIBarButtonItemStylePlain target:self action:@selector(submit:)];
+    
+    [self loadNavigationBarWithItem:item leftItem:leftItem rightItem:nil];
 }
 
 -(void)finishThisPage{
@@ -80,7 +96,7 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setAlignment:NSTextAlignmentCenter];
     [attText1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attText1.length)];
-    _cusArgUilTicketResp.attributedText=attText1;
+    _cusArgUilTicketResp.attributedText = attText1;
     }
 }
 /*
@@ -92,10 +108,11 @@
     return [NSString stringWithFormat:@"#%@", myval  ];
     
 }*/
+/*
 - (IBAction)doOnCloseButtonCliked:(id)sender
 {
 //    self.cusCreateTicketViewController.cusNsnumBoolFinishThisPage  = [NSNumber numberWithBool:YES];
     [self finishThisPage];
 }
-
+*/
 @end

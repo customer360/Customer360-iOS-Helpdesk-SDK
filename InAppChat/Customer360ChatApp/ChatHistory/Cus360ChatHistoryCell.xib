@@ -35,7 +35,7 @@
                 <outlet property="historyCellImage" destination="sMI-BQ-mE7" id="a0d-tu-so2"/>
                 <outlet property="messageLabel" destination="F53-KR-Lam" id="aQp-zo-mFC"/>
             </connections>
-            <point key="canvasLocation" x="370" y="238"/>
+            <point key="canvasLocation" x="142" y="110"/>
         </tableViewCell>
     </objects>
 </document>

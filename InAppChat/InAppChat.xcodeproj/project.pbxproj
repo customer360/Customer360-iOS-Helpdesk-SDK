@@ -48,6 +48,13 @@
 		26E2665B1B59234300D7D6D3 /* waiting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E266271B59234300D7D6D3 /* waiting@3x.png */; };
 		26E9580A1B5CCFF7009D62DE /* PreChatOptionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E958081B5CCFF7009D62DE /* PreChatOptionsVC.m */; };
 		26E9580B1B5CCFF7009D62DE /* PreChatOptionsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E958091B5CCFF7009D62DE /* PreChatOptionsVC.xib */; };
+		26EC25801B5FA0C100147A15 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25761B5FA0C100147A15 /* chat.png */; };
+		26EC25811B5FA0C100147A15 /* ChatHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC25781B5FA0C100147A15 /* ChatHistoryDetailViewController.m */; };
+		26EC25821B5FA0C100147A15 /* ChatHistoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EC25791B5FA0C100147A15 /* ChatHistoryDetailViewController.xib */; };
+		26EC25831B5FA0C100147A15 /* Cus360ChatHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EC257A1B5FA0C100147A15 /* Cus360ChatHistoryCell.xib */; };
+		26EC25841B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC257C1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m */; };
+		26EC25851B5FA0C100147A15 /* Cus360ChatHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC257E1B5FA0C100147A15 /* Cus360ChatHistoryController.m */; };
+		26EC25861B5FA0C100147A15 /* Cus360ChatHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EC257F1B5FA0C100147A15 /* Cus360ChatHistoryController.xib */; };
 		C815EDB61AE91346009DDAB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAE51AE28BD000A75C46 /* Foundation.framework */; };
 		C815EDB71AE91353009DDAB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAD91AE28B7400A75C46 /* CoreLocation.framework */; };
 		C815EDB81AE91361009DDAB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DADB1AE28B7C00A75C46 /* CoreData.framework */; };
@@ -684,30 +691,13 @@
 		F86128061B4BFDDE000978D5 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAE11AE28BA500A75C46 /* libresolv.dylib */; };
 		F86128081B4BFE28000978D5 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F86128071B4BFE28000978D5 /* libresolv.dylib */; };
 		F86128091B4BFF78000978D5 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C803DAE11AE28BA500A75C46 /* libresolv.dylib */; };
-		F861280A1B4C0013000978D5 /* Cus360ChatHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8805DE51B415D040073EFFD /* Cus360ChatHistoryController.m */; };
-		F861280B1B4C0013000978D5 /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8805DEE1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m */; };
-		F861280C1B4C0013000978D5 /* ChatHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87EA4E11B42BC0200863F6C /* ChatHistoryDetailViewController.m */; };
-		F861280D1B4C002B000978D5 /* chat.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8805DE91B41750C0073EFFD /* chat.png */; };
 		F861280E1B4C002B000978D5 /* leftArrow.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8733DBC1B441F8900E9A6BA /* leftArrow.png */; };
 		F861280F1B4C002B000978D5 /* leftArrow@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8733DBD1B441F8900E9A6BA /* leftArrow@2x.png */; };
 		F86128101B4C0041000978D5 /* CUSUiViewControllerBase.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = C8C2AEB31AA57AFC008BAF9D /* CUSUiViewControllerBase.xib */; };
-		F86128111B4C0041000978D5 /* Cus360ChatHistoryController.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8805DE71B415D1D0073EFFD /* Cus360ChatHistoryController.xib */; };
-		F86128121B4C0041000978D5 /* Cus360ChatHistoryCell.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8805DEB1B417FC80073EFFD /* Cus360ChatHistoryCell.xib */; };
-		F86128131B4C0041000978D5 /* ChatHistoryDetailViewController.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F87EA4DE1B42BA1100863F6C /* ChatHistoryDetailViewController.xib */; };
-		F86128141B4C0053000978D5 /* Cus360ChatHistoryController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8805DE41B415D040073EFFD /* Cus360ChatHistoryController.h */; };
-		F86128151B4C0053000978D5 /* Cus360ChatHistoryCellControllerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F8805DED1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.h */; };
-		F86128161B4C0053000978D5 /* ChatHistoryDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F87EA4E01B42BC0200863F6C /* ChatHistoryDetailViewController.h */; };
 		F8733DBE1B441F8900E9A6BA /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F8733DBC1B441F8900E9A6BA /* leftArrow.png */; };
 		F8733DBF1B441F8900E9A6BA /* leftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8733DBD1B441F8900E9A6BA /* leftArrow@2x.png */; };
 		F87EA4DC1B4298C200863F6C /* barbie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87EA4DB1B42976B00863F6C /* barbie.ttf */; };
 		F87EA4DD1B4298C200863F6C /* chalkdust.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87EA4DA1B42788700863F6C /* chalkdust.ttf */; };
-		F87EA4DF1B42BA1100863F6C /* ChatHistoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87EA4DE1B42BA1100863F6C /* ChatHistoryDetailViewController.xib */; };
-		F87EA4E21B42BC0200863F6C /* ChatHistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87EA4E11B42BC0200863F6C /* ChatHistoryDetailViewController.m */; };
-		F8805DE61B415D040073EFFD /* Cus360ChatHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8805DE51B415D040073EFFD /* Cus360ChatHistoryController.m */; };
-		F8805DE81B415D1D0073EFFD /* Cus360ChatHistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8805DE71B415D1D0073EFFD /* Cus360ChatHistoryController.xib */; };
-		F8805DEA1B41750C0073EFFD /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F8805DE91B41750C0073EFFD /* chat.png */; };
-		F8805DEC1B417FC80073EFFD /* Cus360ChatHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8805DEB1B417FC80073EFFD /* Cus360ChatHistoryCell.xib */; };
-		F8805DEF1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8805DEE1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m */; };
 		F88921DD1B22F59F00B66D28 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C85DDEB31AE651BF00050852 /* LocationManager.m */; };
 		F88921DE1B22F5EB00B66D28 /* LocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C85DDEB21AE651BF00050852 /* LocationManager.h */; };
 /* End PBXBuildFile section */
@@ -720,10 +710,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				F86128101B4C0041000978D5 /* CUSUiViewControllerBase.xib in CopyFiles */,
-				F86128111B4C0041000978D5 /* Cus360ChatHistoryController.xib in CopyFiles */,
-				F86128121B4C0041000978D5 /* Cus360ChatHistoryCell.xib in CopyFiles */,
-				F86128131B4C0041000978D5 /* ChatHistoryDetailViewController.xib in CopyFiles */,
-				F861280D1B4C002B000978D5 /* chat.png in CopyFiles */,
 				F861280E1B4C002B000978D5 /* leftArrow.png in CopyFiles */,
 				F861280F1B4C002B000978D5 /* leftArrow@2x.png in CopyFiles */,
 				C82AB92A1ADD6A24005C069E /* CUSThankYouViewController.xib in CopyFiles */,
@@ -840,6 +826,16 @@
 		26E958071B5CCFF7009D62DE /* PreChatOptionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreChatOptionsVC.h; sourceTree = "<group>"; };
 		26E958081B5CCFF7009D62DE /* PreChatOptionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreChatOptionsVC.m; sourceTree = "<group>"; };
 		26E958091B5CCFF7009D62DE /* PreChatOptionsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreChatOptionsVC.xib; sourceTree = "<group>"; };
+		26EC25761B5FA0C100147A15 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		26EC25771B5FA0C100147A15 /* ChatHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHistoryDetailViewController.h; sourceTree = "<group>"; };
+		26EC25781B5FA0C100147A15 /* ChatHistoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHistoryDetailViewController.m; sourceTree = "<group>"; };
+		26EC25791B5FA0C100147A15 /* ChatHistoryDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatHistoryDetailViewController.xib; sourceTree = "<group>"; };
+		26EC257A1B5FA0C100147A15 /* Cus360ChatHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cus360ChatHistoryCell.xib; sourceTree = "<group>"; };
+		26EC257B1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cus360ChatHistoryCellControllerTableViewCell.h; sourceTree = "<group>"; };
+		26EC257C1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cus360ChatHistoryCellControllerTableViewCell.m; sourceTree = "<group>"; };
+		26EC257D1B5FA0C100147A15 /* Cus360ChatHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cus360ChatHistoryController.h; sourceTree = "<group>"; };
+		26EC257E1B5FA0C100147A15 /* Cus360ChatHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cus360ChatHistoryController.m; sourceTree = "<group>"; };
+		26EC257F1B5FA0C100147A15 /* Cus360ChatHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cus360ChatHistoryController.xib; sourceTree = "<group>"; };
 		C803DAD71AE28B5C00A75C46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C803DAD91AE28B7400A75C46 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		C803DADB1AE28B7C00A75C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
@@ -1295,16 +1291,6 @@
 		F8733DBD1B441F8900E9A6BA /* leftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftArrow@2x.png"; sourceTree = "<group>"; };
 		F87EA4DA1B42788700863F6C /* chalkdust.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chalkdust.ttf; sourceTree = "<group>"; };
 		F87EA4DB1B42976B00863F6C /* barbie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = barbie.ttf; sourceTree = "<group>"; };
-		F87EA4DE1B42BA1100863F6C /* ChatHistoryDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatHistoryDetailViewController.xib; sourceTree = "<group>"; };
-		F87EA4E01B42BC0200863F6C /* ChatHistoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHistoryDetailViewController.h; sourceTree = "<group>"; };
-		F87EA4E11B42BC0200863F6C /* ChatHistoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHistoryDetailViewController.m; sourceTree = "<group>"; };
-		F8805DE41B415D040073EFFD /* Cus360ChatHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cus360ChatHistoryController.h; sourceTree = "<group>"; };
-		F8805DE51B415D040073EFFD /* Cus360ChatHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cus360ChatHistoryController.m; sourceTree = "<group>"; };
-		F8805DE71B415D1D0073EFFD /* Cus360ChatHistoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cus360ChatHistoryController.xib; sourceTree = "<group>"; };
-		F8805DE91B41750C0073EFFD /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
-		F8805DEB1B417FC80073EFFD /* Cus360ChatHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cus360ChatHistoryCell.xib; sourceTree = "<group>"; };
-		F8805DED1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cus360ChatHistoryCellControllerTableViewCell.h; sourceTree = "<group>"; };
-		F8805DEE1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cus360ChatHistoryCellControllerTableViewCell.m; sourceTree = "<group>"; };
 		F8891F551B22CF1E00B66D28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F8891F571B22CF2500B66D28 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		F8891F591B22CF3000B66D28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -1395,6 +1381,23 @@
 			path = iconsUI;
 			sourceTree = "<group>";
 		};
+		26EC25751B5FA0C100147A15 /* ChatHistory */ = {
+			isa = PBXGroup;
+			children = (
+				26EC25761B5FA0C100147A15 /* chat.png */,
+				26EC25771B5FA0C100147A15 /* ChatHistoryDetailViewController.h */,
+				26EC25781B5FA0C100147A15 /* ChatHistoryDetailViewController.m */,
+				26EC25791B5FA0C100147A15 /* ChatHistoryDetailViewController.xib */,
+				26EC257A1B5FA0C100147A15 /* Cus360ChatHistoryCell.xib */,
+				26EC257B1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.h */,
+				26EC257C1B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m */,
+				26EC257D1B5FA0C100147A15 /* Cus360ChatHistoryController.h */,
+				26EC257E1B5FA0C100147A15 /* Cus360ChatHistoryController.m */,
+				26EC257F1B5FA0C100147A15 /* Cus360ChatHistoryController.xib */,
+			);
+			path = ChatHistory;
+			sourceTree = "<group>";
+		};
 		C8C01AEC1ABC573900FB875F /* PostChat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1470,7 +1473,7 @@
 				C8C2B1741AA58B32008BAF9D /* Chat */,
 				C8C2AF751AA58AFF008BAF9D /* XMPP */,
 				C8C2AEA91AA57AFC008BAF9D /* Base */,
-				F8805DDE1B415CA40073EFFD /* ChatHistory */,
+				26EC25751B5FA0C100147A15 /* ChatHistory */,
 				C8C2AF5C1AA57C09008BAF9D /* PreChat */,
 				C8C2AF0E1AA57B2D008BAF9D /* CusChatAppDelegate.h */,
 				C8C2AF0F1AA57B2D008BAF9D /* CusChatAppDelegate.m */,
@@ -2625,23 +2628,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		F8805DDE1B415CA40073EFFD /* ChatHistory */ = {
-			isa = PBXGroup;
-			children = (
-				F8805DE41B415D040073EFFD /* Cus360ChatHistoryController.h */,
-				F8805DE51B415D040073EFFD /* Cus360ChatHistoryController.m */,
-				F8805DE71B415D1D0073EFFD /* Cus360ChatHistoryController.xib */,
-				F8805DE91B41750C0073EFFD /* chat.png */,
-				F8805DED1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.h */,
-				F8805DEE1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m */,
-				F8805DEB1B417FC80073EFFD /* Cus360ChatHistoryCell.xib */,
-				F87EA4DE1B42BA1100863F6C /* ChatHistoryDetailViewController.xib */,
-				F87EA4E01B42BC0200863F6C /* ChatHistoryDetailViewController.h */,
-				F87EA4E11B42BC0200863F6C /* ChatHistoryDetailViewController.m */,
-			);
-			path = ChatHistory;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2650,9 +2636,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8CBF66F1AC2CE3F00151372 /* Cus360Chat.h in Headers */,
-				F86128141B4C0053000978D5 /* Cus360ChatHistoryController.h in Headers */,
-				F86128151B4C0053000978D5 /* Cus360ChatHistoryCellControllerTableViewCell.h in Headers */,
-				F86128161B4C0053000978D5 /* ChatHistoryDetailViewController.h in Headers */,
 				F88921DE1B22F5EB00B66D28 /* LocationManager.h in Headers */,
 				C8D2D56F1ADFBFEF005DFF16 /* ModelAccessTokenChat.h in Headers */,
 				C8D436AF1ADD40D30052C668 /* PreChatViewController.h in Headers */,
@@ -2914,12 +2897,12 @@
 				26E266511B59234300D7D6D3 /* select@2x.png in Resources */,
 				C8C01AE91ABC46A000FB875F /* cus_consumer_icon.png in Resources */,
 				C8C509751AC1764F00B3F265 /* bad-active@2x.png in Resources */,
+				26EC25821B5FA0C100147A15 /* ChatHistoryDetailViewController.xib in Resources */,
 				C8C01AEB1ABC46C700FB875F /* cus_agent_icon.png in Resources */,
 				C8C509811AC1764F00B3F265 /* worst-active@2x.png in Resources */,
 				26E2664D1B59234300D7D6D3 /* remove.png in Resources */,
 				F8733DBE1B441F8900E9A6BA /* leftArrow.png in Resources */,
 				C8C5097C1AC1764F00B3F265 /* good-active.png in Resources */,
-				F8805DEC1B417FC80073EFFD /* Cus360ChatHistoryCell.xib in Resources */,
 				26E266351B59234300D7D6D3 /* camera@2x.png in Resources */,
 				C8CBF4E11AC2C00000151372 /* star_highlighted-darker.png in Resources */,
 				C8CBF4E01AC2C00000151372 /* star@2x.png in Resources */,
@@ -2951,9 +2934,9 @@
 				26E266501B59234300D7D6D3 /* select.png in Resources */,
 				C8C2AF6F1AA57C09008BAF9D /* PreChatViewController.xib in Resources */,
 				C8C52F921AB193DC00C4A26E /* WaitingScreen.png in Resources */,
+				26EC25801B5FA0C100147A15 /* chat.png in Resources */,
 				C8C509771AC1764F00B3F265 /* bad@2x.png in Resources */,
 				C8C327841AD29A0C0039F921 /* agent128.png in Resources */,
-				F8805DE81B415D1D0073EFFD /* Cus360ChatHistoryController.xib in Resources */,
 				C8D68FF51AD4FC4B0097EB2E /* radio-selected@2x.png in Resources */,
 				26E266591B59234300D7D6D3 /* waiting.png in Resources */,
 				C8C2AF6B1AA57C09008BAF9D /* checked@2x.png in Resources */,
@@ -2986,6 +2969,7 @@
 				26E2662E1B59234300D7D6D3 /* back.png in Resources */,
 				26E2662F1B59234300D7D6D3 /* back@2x.png in Resources */,
 				26E9580B1B5CCFF7009D62DE /* PreChatOptionsVC.xib in Resources */,
+				26EC25861B5FA0C100147A15 /* Cus360ChatHistoryController.xib in Resources */,
 				26E2665B1B59234300D7D6D3 /* waiting@3x.png in Resources */,
 				C8D68FF31AD4FC4B0097EB2E /* radio-default@2x.png in Resources */,
 				C8C509721AC1764F00B3F265 /* average.png in Resources */,
@@ -2995,7 +2979,6 @@
 				C8D69D9D1AD40FDA00F4BC06 /* arrow@2x.png in Resources */,
 				26E266361B59234300D7D6D3 /* camera@3x.png in Resources */,
 				F8733DBF1B441F8900E9A6BA /* leftArrow@2x.png in Resources */,
-				F87EA4DF1B42BA1100863F6C /* ChatHistoryDetailViewController.xib in Resources */,
 				C8D68FF21AD4FC4B0097EB2E /* radio-default.png in Resources */,
 				C8C5097B1AC1764F00B3F265 /* excellent@2x.png in Resources */,
 				26E2663B1B59234300D7D6D3 /* clock@2x.png in Resources */,
@@ -3004,7 +2987,6 @@
 				C8C5097F1AC1764F00B3F265 /* good@2x.png in Resources */,
 				C8D68FF71AD4FC4B0097EB2E /* start-default@2x.png in Resources */,
 				26E2663D1B59234300D7D6D3 /* ok.png in Resources */,
-				F8805DEA1B41750C0073EFFD /* chat.png in Resources */,
 				C8C327851AD29A0C0039F921 /* customer128.png in Resources */,
 				C8CBF4BB1AC27BAD00151372 /* thank_you.png in Resources */,
 				26E2663F1B59234300D7D6D3 /* ok@3x.png in Resources */,
@@ -3018,6 +3000,7 @@
 				C8C509821AC1764F00B3F265 /* worst.png in Resources */,
 				C8C509581AC15FB100B3F265 /* CUSThankYouViewController.xib in Resources */,
 				26E2663E1B59234300D7D6D3 /* ok@2x.png in Resources */,
+				26EC25831B5FA0C100147A15 /* Cus360ChatHistoryCell.xib in Resources */,
 				26E2662A1B59234300D7D6D3 /* album@3x.png in Resources */,
 				C8C5097D1AC1764F00B3F265 /* good-active@2x.png in Resources */,
 			);
@@ -3076,9 +3059,9 @@
 				C8C2B1201AA58AFF008BAF9D /* XMPPRoom.m in Sources */,
 				C8C2B15C1AA58AFF008BAF9D /* NSXMLElement+XEP_0335.m in Sources */,
 				C8C2B1371AA58AFF008BAF9D /* XMPPDateTimeProfiles.m in Sources */,
-				F8805DE61B415D040073EFFD /* Cus360ChatHistoryController.m in Sources */,
 				C8CBF4E51AC2C00000151372 /* UIView+Subviews.m in Sources */,
 				C8C2B15E1AA58AFF008BAF9D /* GCDMulticastDelegate.m in Sources */,
+				26EC25811B5FA0C100147A15 /* ChatHistoryDetailViewController.m in Sources */,
 				C8C2B0FB1AA58AFF008BAF9D /* XMPPBandwidthMonitor.m in Sources */,
 				C8C2B1041AA58AFF008BAF9D /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				C8C2B1311AA58AFF008BAF9D /* XMPPPubSub.m in Sources */,
@@ -3101,12 +3084,12 @@
 				C8D2D49D1ADF9859005DFF16 /* AFHTTPRequestOperationManager.m in Sources */,
 				C8C2B1421AA58AFF008BAF9D /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				C8C2B1391AA58AFF008BAF9D /* XMPPSoftwareVersion.m in Sources */,
-				F8805DEF1B418C9C0073EFFD /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */,
 				C8C2B1711AA58AFF008BAF9D /* DDXMLNode.m in Sources */,
 				C8C52FAC1AB1C40900C4A26E /* CusChatMessage.m in Sources */,
 				C8C2B1601AA58AFF008BAF9D /* XMPPIDTracker.m in Sources */,
 				C8C2B10A1AA58AFF008BAF9D /* XMPPUserMemoryStorageObject.m in Sources */,
 				C8C2B38F1AA5DB67008BAF9D /* WaitViewController.m in Sources */,
+				26EC25851B5FA0C100147A15 /* Cus360ChatHistoryController.m in Sources */,
 				C8C2B1171AA58AFF008BAF9D /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				C8D2D49E1ADF9859005DFF16 /* AFHTTPSessionManager.m in Sources */,
 				C8C2B0F61AA58AFF008BAF9D /* XMPPMessage.m in Sources */,
@@ -3115,7 +3098,6 @@
 				C8C2B1281AA58AFF008BAF9D /* XMPPvCardTempAdrTypes.m in Sources */,
 				C8C2B10B1AA58AFF008BAF9D /* XMPPRoster.m in Sources */,
 				C8C2B16E1AA58AFF008BAF9D /* NSString+DDXML.m in Sources */,
-				F87EA4E21B42BC0200863F6C /* ChatHistoryDetailViewController.m in Sources */,
 				C8C2B14A1AA58AFF008BAF9D /* XMPPMessageDeliveryReceipts.m in Sources */,
 				C8C2B0F01AA58AFF008BAF9D /* NSNumber+XMPP.m in Sources */,
 				C8C2B1611AA58AFF008BAF9D /* XMPPSRVResolver.m in Sources */,
@@ -3201,6 +3183,7 @@
 				C8C2B0FA1AA58AFF008BAF9D /* XMPPStream.m in Sources */,
 				C8C01AF01ABC576D00FB875F /* PostChatViewController.m in Sources */,
 				C8C2B1481AA58AFF008BAF9D /* XMPPPresence+XEP_0172.m in Sources */,
+				26EC25841B5FA0C100147A15 /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */,
 				C8C2B1661AA58AFF008BAF9D /* DDASLLogger.m in Sources */,
 				C8C2B14E1AA58AFF008BAF9D /* XMPPStreamManagement.m in Sources */,
 				C8C2AF701AA57C09008BAF9D /* RadioButton.m in Sources */,
@@ -3215,9 +3198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F861280A1B4C0013000978D5 /* Cus360ChatHistoryController.m in Sources */,
-				F861280B1B4C0013000978D5 /* Cus360ChatHistoryCellControllerTableViewCell.m in Sources */,
-				F861280C1B4C0013000978D5 /* ChatHistoryDetailViewController.m in Sources */,
 				F88921DD1B22F59F00B66D28 /* LocationManager.m in Sources */,
 				C8D2D5701ADFC00B005DFF16 /* ModelAccessTokenChat.m in Sources */,
 				C8CBF5171AC2CD6300151372 /* CusChatMessageContent.m in Sources */,

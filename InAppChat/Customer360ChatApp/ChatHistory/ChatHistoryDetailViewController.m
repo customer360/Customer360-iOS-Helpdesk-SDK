@@ -43,19 +43,19 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (noOfMsgs==0) {
-        UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(46, [UIScreen mainScreen].bounds.size.height/2, CusChatscreenW-92,34 );
-        title.numberOfLines=0;
-        title.font = [UIFont systemFontOfSize:14.0f];
-        title.textAlignment = NSTextAlignmentCenter;
-        title.text= @"No conversation is recorded for this chat.";
-        title.backgroundColor = [UIColor colorWithRed:188.0/255.0 green:235.0/255.0 blue:189.0/255.0 alpha:1.0];
-        title.textColor = [UIColor colorWithRed:41.0/255.0 green:89.0/255.0 blue:0.0/255.0 alpha:1.0];
-        [[title layer] setCornerRadius:4.0f];
-        [[title layer] setMasksToBounds:YES];
-        [self.view addSubview:title];
-    }
+//    if (noOfMsgs<5) {
+//        UILabel *title = [[UILabel alloc] init];
+//        title.frame = CGRectMake(46, [UIScreen mainScreen].bounds.size.height/2, CusChatscreenW-92,34 );
+//        title.numberOfLines=0;
+//        title.font = [UIFont systemFontOfSize:14.0f];
+//        title.textAlignment = NSTextAlignmentCenter;
+//        title.text= @"No conversation is recorded for this chat.";
+//        title.backgroundColor = [UIColor colorWithRed:188.0/255.0 green:235.0/255.0 blue:189.0/255.0 alpha:1.0];
+//        title.textColor = [UIColor colorWithRed:41.0/255.0 green:89.0/255.0 blue:0.0/255.0 alpha:1.0];
+//        [[title layer] setCornerRadius:4.0f];
+//        [[title layer] setMasksToBounds:YES];
+//        [self.view addSubview:title];
+//    }
 }
 
 -(void)prepareArray{
@@ -66,7 +66,6 @@
             continue;
         if ([[tempDict objectForKey:@"message"] isEqualToString:@"Pre chat form message"])
             continue;
-        
         
         NSString *body = [tempDict objectForKey:@"message"];
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -140,7 +139,18 @@
     if (indexPath.row == 0 || indexPath.row == [tableView numberOfRowsInSection:indexPath.section]-1) {
         
         UITableViewCell* cell  = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TitleLable"];
-        if(noOfMsgs==0){
+        if(noOfMsgs<5 && [_messages count]<2){
+            UILabel *title = [[UILabel alloc] init];
+            title.frame = CGRectMake(46, [UIScreen mainScreen].bounds.size.height/2, CusChatscreenW-92,34 );
+            title.numberOfLines=0;
+            title.font = [UIFont systemFontOfSize:14.0f];
+            title.textAlignment = NSTextAlignmentCenter;
+            title.text= @"No conversation is recorded for this chat.";
+            title.backgroundColor = [UIColor colorWithRed:188.0/255.0 green:235.0/255.0 blue:189.0/255.0 alpha:1.0];
+            title.textColor = [UIColor colorWithRed:41.0/255.0 green:89.0/255.0 blue:0.0/255.0 alpha:1.0];
+            [[title layer] setCornerRadius:4.0f];
+            [[title layer] setMasksToBounds:YES];
+            [self.view addSubview:title];
             return cell;
         }
         UILabel *title = [[UILabel alloc] init];
