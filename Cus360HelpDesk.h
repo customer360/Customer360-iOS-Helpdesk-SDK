@@ -38,8 +38,12 @@ extern NSString * const cusConstStrKeyTextColor;
 extern NSString * const cusConstStrKeyHelpDeskVisitorID;
 
 extern NSString * const cusConstStrKeyTitle;
+extern NSString * const cusConstStrKeyTitleRaiseTicket;
+extern NSString * const cusConstStrKeyTitleConversation;
+extern NSString * const cusConstStrKeyTitleThankYou;
+extern NSString * const cusConstStrKeyThankYouMessage;
 extern NSString * const cusConstStrKeyUserEmail;
-extern NSString * const cusConstStrKeyUserName;
+extern NSString * const cusConstStrKeySubject;
 extern NSString * const cusConstStrKeyFeedback;
 extern NSString * const cusConstStrKeyNavBarGradientColorFirst;
 extern NSString * const cusConstStrKeyNavBarGradientColorSecond;
@@ -111,9 +115,13 @@ extern NSString * const cusConstStrKeyNavBarGradientColorSecond;
 @property (nonatomic, strong) NSMutableArray *unreadHelpDesk;
 @property (nonatomic, strong) UIColor *defaultTextColor;
 @property (nonatomic, strong, readonly) NSString* cusStrDeveloperEmaiId;
-@property (nonatomic, strong, readonly) NSString* cusStrUserName;
+@property (nonatomic, strong, readonly) NSString* cusStrSubject;
 @property (nonatomic, strong, readonly) NSString* cusStrUserFeedback;
-@property (nonatomic, strong, readonly) NSString* cusStrNavBarTitle;
+@property (nonatomic, strong, readonly) NSString* cusStrNavBarTitleListing;
+@property (nonatomic, strong, readonly) NSString* cusStrNavBarTitleRaiseTIcket;
+@property (nonatomic, strong, readonly) NSString* cusStrNavBarTitleConversation;
+@property (nonatomic, strong, readonly) NSString* cusStrNavBarTitleThankYou;
+@property (nonatomic, strong, readonly) NSString* cusStrThankYouMessage;
 @property (nonatomic) BOOL getFormID;
 
 #pragma mark - singleton getInstance() method...
