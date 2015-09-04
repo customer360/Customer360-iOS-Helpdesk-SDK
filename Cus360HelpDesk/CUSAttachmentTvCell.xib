@@ -67,7 +67,7 @@
                 <outlet property="cusUilName" destination="mj1-cp-9Sj" id="8al-3l-9V5"/>
                 <outlet property="cusUilSize" destination="xwu-Bu-6fZ" id="TtJ-8Q-CIN"/>
             </connections>
-            <point key="canvasLocation" x="359" y="256"/>
+            <point key="canvasLocation" x="506" y="14"/>
         </tableViewCell>
     </objects>
     <resources>
